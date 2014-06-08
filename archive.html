@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Archive</title>
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+<link rel="stylesheet" type="text/css" href="./css/syntax.css"></head>
+<body>
+
+<div id="sidebar"><img src="./images/headCut.png" alt="Logo" align="right"></div>
+<div id="content">
+<table cellpadding="3" cellspacing="3"><tbody><tr> 
+<td class="cl">  <a href="./" target="_parent">NEWS</a> </td>
+<td class="cl">  <a href="./doc/" target="_parent">ARTiCLES</a> </td>
+<td class="cl">  <a href="./passgen/" target="_parent">PASSGENS</a> </td>
+<td class="cl">  <strong>ARCHiVE</strong> </td>
+<td class="cl">  <a href="./about.html" target="_parent">ABOUT</a> </td>
+</tr></tbody></table>
+
+            <ul>
+    
+        <li>
+            <strong>[July 14, 2o12]</strong>
+	    <p>And that’s first old post Fusce tortor quam, egestas in posuere quis, porttitor vel turpis. Donec vulputate porttitor augue at rhoncus. Proin iaculis consectetur sagittis. Curabitur venenatis turpis sit amet purus tristique nec posuere risus laoreet. Nullam nisi sem, dapibus id semper id, egestas vel arcu. Morbi porttitor ipsum placerat erat consequat sed consequat purus feugiat. Donec auctor elit ut risus mattis facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<p>Proin vulputate sapien facilisis leo ornare pulvinar. Fusce tempus massa a risus semper iaculis. Suspendisse sollicitudin posuere nunc, sit amet rutrum leo facilisis mattis. Sed ornare auctor dui, vitae rutrum neque auctor sit amet. Proin ac dui magna. Mauris vehicula interdum augue, nec ultrices libero egestas quis. Nunc convallis euismod ipsum, id sollicitudin orci consequat ac. Fusce bibendum congue libero, in rutrum nulla congue non. Cras sit amet risus tortor, eu pellentesque dui. Phasellus euismod enim non nibh sodales quis consectetur lorem laoreet. Vivamus a egestas quam. Curabitur in tortor augue, vitae varius tellus. Integer varius, elit ac gravida suscipit, eros erat pellentesque nisi, et tristique augue odio id nulla. Aliquam sit amet nunc vel tellus hendrerit tempus ac vel sem.</p>
+        </li>
+    
+        <li>
+            <strong>[June 17, 2o12]</strong>
+	    <p>And that’s second old post Fusce tortor quam, egestas in posuere quis, porttitor vel turpis. Donec</p>
+<table class="sourceCode haskell numberLines" id="code"><tr class="sourceCode"><td class="lineNumbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="sourceCode"><pre><code class="sourceCode haskell"><span class="ot">modificationTimeFieldWith ::</span> <span class="dt">TimeLocale</span>  <span class="co">-- ^ Time output locale</span>
+                          <span class="ot">-&gt;</span> <span class="dt">String</span>      <span class="co">-- ^ Key</span>
+                          <span class="ot">-&gt;</span> <span class="dt">String</span>      <span class="co">-- ^ Format</span>
+                          <span class="ot">-&gt;</span> <span class="dt">Context</span> a   <span class="co">-- ^ Resulting context</span>
+modificationTimeFieldWith locale key fmt <span class="fu">=</span> field key <span class="fu">$</span> \i <span class="ot">-&gt;</span> <span class="kw">do</span>
+    provider <span class="ot">&lt;-</span> compilerProvider <span class="fu">&lt;$&gt;</span> compilerAsk
+    <span class="kw">let</span> mtime <span class="fu">=</span> resourceModificationTime provider <span class="fu">$</span> itemIdentifier i
+    return <span class="fu">$</span> formatTime locale fmt mtime</code></pre></td></tr></table>
+<p>sus mattis facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+<p>Proin vulputate sapien facilisis leo ornare pulvinar. Fusce tempus massa a risus semper iaculis. Suspendisse sollicitudin posuere nunc, sit amet rutrum leo</p>
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> print_decoded(<span class="dt">char</span> chr)<span class="co">//decode table and special chars processing</span>
+{
+<span class="dt">int</span> i, spaces, lines, ppu_chunk_size;
+
+	<span class="kw">switch</span> ((u8)chr)
+	{
+		<span class="kw">case</span> END_OF_MSG:
+			printf(<span class="st">&quot;&lt;</span><span class="ch">\\</span><span class="st">MSG&gt;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+			<span class="kw">break</span>;
+		<span class="kw">case</span> END_OF_SCREEN:
+			printf(<span class="st">&quot;&lt;</span><span class="ch">\\</span><span class="st">SCREEN&gt;</span><span class="ch">\n</span><span class="st">&quot;</span>);
+			<span class="kw">break</span>;
+		<span class="kw">default</span>:
+
+			<span class="kw">if</span> (global_screencount &gt;= LEVEL_STRING_INDEX)<span class="co">//level strings process first 2 bytes (or 1) as PPU pointer. Last char has HIbit risen - terminate string</span>
+			{
+				ppu_chunk_size = (global_screencount == LEVEL_STRING_INDEX) ? <span class="dv">2</span> : <span class="dv">1</span>;
+
+				<span class="kw">if</span> (global_charcount &lt; ppu_chunk_size)
+					printf(<span class="st">&quot;&lt;PPU:%02x&gt;&quot;</span>, (u8)chr);			
+				<span class="kw">else</span>
+					printf(<span class="st">&quot;%c&quot;</span>, chr &amp; <span class="bn">0x7F</span>);<span class="co">//last char has HIbit - no use for decompress</span>
+			}
+
+			<span class="kw">else</span><span class="co">//normal message</span>
+			{
+
+				<span class="kw">if</span> ((chr &amp; <span class="bn">0x80</span>) != <span class="dv">0</span>)<span class="co">//Hi bit in ASCII char - means special positioning symbol</span>
+				{
+
+					lines = (chr &amp; <span class="bn">0x7F</span>) &gt;&gt; <span class="dv">5</span>; <span class="co">//Y coord 2 higher bits</span>
+					<span class="kw">for</span> (i = <span class="dv">0</span>; i &lt; lines; i++)
+						printf(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);				
+
+					spaces = chr &amp; <span class="bn">0x1F</span>; <span class="co">//X coord 5 lower bits</span>
+					<span class="kw">for</span> (i = <span class="dv">0</span>; i &lt; spaces; i++)
+						printf(<span class="st">&quot; &quot;</span>);
+
+				}
+				<span class="kw">else</span>
+					printf(<span class="st">&quot;%c&quot;</span>, chr);	
+			}
+
+	}
+}</code></pre>
+<p>facilisis mattis. Sed ornare auctor dui, vitae rutrum neque auctor sit amet. Proin ac dui magna. Mauris vehicula interdum augue, nec ultrices libero egestas quis. Nunc convallis euismod ipsum, id sollicitudin orci consequat ac. Fusce</p>
+<p>Footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> have a label<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> and the footnote’s content.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>This is a footnote content.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>A footnote on the label: “@#$%”.<a href="#fnref2">↩</a></p></li>
+</ol>
+</div>
+        </li>
+    
+</ul>
+
+<hr>
+<a href="http://jigsaw.w3.org/css-validator/check/referer"><img src="./images/valid_css.png" alt="Valid CSS" border="0" align="right"></a><a href="http://validator.w3.org/check?uri=referer"><img src="./images/valid_html.png" alt="Valid HTML" border="0" align="right"></a>
+</div></body></html>
+
+
+

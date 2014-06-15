@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Изучение систем паролей в играх SEGA MD/Genesis</title>
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
+<link rel="stylesheet" type="text/css" href="../../css/syntax.css"></head>
+<body>
+
+<div id="sidebar"><img src="../../files/head.png" alt="Logo" align="right"></div>
+<div id="content">
+<table cellpadding="3" cellspacing="3"><tbody><tr> 
+<td class="cl">  <a href="../../" target="_parent">NEWS</a> </td>
+<td class="cl">  <a href="../../doc/" target="_parent">ARTiCLES</a> </td>
+<td class="cl">  <a href="../../passgen/" target="_parent">PASSGENS</a> </td>
+<td class="cl">  <a href="../../archive.html" target="_parent">ARCHiVE</a> </td>
+<td class="cl">  <a href="../../about.html" target="_parent">ABOUT</a> </td>
+</tr></tbody></table>
+
+            <h1>Изучение систем паролей в играх SEGA MD/Genesis</h1>
+<p>В этом документе нам понадобятся:</p>
+<ul>
+<li><a href="http://consolgames.ru/download.php?view.61">‘Gens мод VKNTracer’</a> от Виктора Константиновича Яковлева. Будем использовать эту версию, потому что в ней совмещены неглючный (в отличие от G8z et al’овского трейсера) поиск читов позаимствованный из мода Gens-а mk2, и остановы, возможностей которых нам хватит для наших сегодняшних задач (я уж не говорю об имеющихся тут же хуках, взятых из трейсера G8z et al’а, которые мы сегодня использовать не будем).</li>
+<li>IDA 5.2, на этот раз, просто необходима. Без нее легко утонуть в море дизассемблированного кода. Напомню, что HardWareMan написал под нее <a href="http://forum.emu-russia.net/viewtopic.php?f=13&amp;t=530&amp;sid=eb19bc2fe361b68700e2184915b690c0&amp;view=unread#unread">загрузчик</a> для РОМов Сеги.</li>
+<li>Базовые знания ассемблера M68000.</li>
+<li>ROM ‘Cannon Fodder (E) [!].bin’.</li>
+</ul>
+<p>Сразу нужно сказать, что процесс исследования систем паролей Сеги почти не отличается от NES. Разница лишь в инструментах.<br />Итак, как и в <a href="../../doc/fceuDoc2">доке по паролям на NES</a>, сначала мы должны найти пароль в оперативной памяти. Тут нам и пригодится поиск читов в Gens VKNTracer: открываем наш ROM, переходим на экран ввода пароля и открываем CPU -&gt; Debug -&gt; Поиск-кодов. Для удобства можно выставить Data Type: Hexadecimal. Так как мы ищем одну букву, наверное, она не будет занимать больше одного байта в памяти, поэтому Data Size: 1 byte. Нажимаем ‘Сброс’ и в левом окне у нас появляются все ячейки оперативной памяти, среди которых сейчас находится и ячейка с первой буквой пароля, которую мы будем искать. Жмём ОК, а через некоторое время открываем окно поиска читов снова. Так как мы не меняли значение первой буквы пароля, ячейка, которая ее содержит, не изменилась. Смело выставляем =(равен) и жмем поиск. Пока это не заметно, но часть ячеек, значения которых поменялись с момента первого вызова окна поиска читов, уже отброшена и зона поиска заметно снизилась. Теперь сделаем первой буквой пароля ‘B’. Опять вызываем окно поиска читов и, так как, код буквы, скорее всего, увеличился на единичку, выставляем &gt;(больше чем) и жмем поиск. Увеличивая и уменьшая первую букву, легко добиться отсечения всех ненужных нам ячеек:<br /><img src="Cheat_Search.png" alt="cheat search" /><br />Ячейка 0xFF280E выглядит очень подозрительно. Во-первых, она изменилась только на единичку, как и наша буква. А во-вторых, значение 0x41 соответствует коду буквы ‘A’ в кодировке ASCII. Чтобы убедиться наверняка, откроем просмотрщик памяти: <code>CPU-&gt;Debug-&gt;Genesis Main 68k RAM</code>, и найдем адрес 0x280E. Оставив просмотрщик в фоне, перейдем в окно эмулятора и поизменяем значения разных букв пароля. Тут уж сомнений не остается: по адресам в оперативной памяти 0x280E - 0x2812 расположены наши пять знаков пароля. Еще мы узнали, что все буквы содержатся в кодировке ASCII и, если буква еще не набрана, в ячейке будет ноль.<br />Чтобы теперь нам найти алгоритм проверки пароля, поставим останов на чтение из этого диапазона: CPU -&gt; Debug -&gt; Genesis Main 68k Debugger:<br /><img src="check_Debug.png" alt="check debug" /><br />Выставляем останов, нажимаем ОК и проверяем введенный пароль в игре (пусть даже неверный). Игра останавливается по адресам 0x01A460 и 0x1A46E. Наверное, это и есть процедура проверки пароля, которая после прочтения значений букв говорит, правильный это пароль или нет. Но изучать эту процедуру в отладчике сплошное мучение.После загрузки ROM’а в IDA и распознания кода по адресу 0x01A460, получаем чистую и довольно понятную процедуру проверки:<br /><img src="Graph_of_Password_Check.png" alt="Graph_of_Password_Check" /> Где<br /><img src="Graph_of_CheckSum_Shuffle.png" alt="Graph_of_CheckSum_Shuffle" /><br />и<br /><img src="Graph_of_CheckSum_Calc.png" alt="Graph_of_CheckSum_Calc" /><br />где<br /><img src="Graph_of_Shuffle_Data.png" alt="Graph_of_Shuffle_Data" /><br />Итак, что мы видим из этой процедуры? Игра берет 5 знаков пароля, затем по определенной, не имеющей почти никакого математического смысла, процедуре из знаков пароля рассчитывает чексумму пароля. Из младших битов чексуммы находятся номер уровня и число оставшихся в живых солдат (эти две величины проверяются на превышение максимальных значений). Затем из этих двух величин рассчитывается вторая чексумма, которую должен иметь правильный пароль с таким номером уровня и таким числом солдат. Если он совпадает с первой чексуммой, значит пароль верный. Процедура возвращает в регистре d0 ноль. Если хотя бы одно из условий верности пароля не выполняется (номер уровня больше 23, число солдат больше 360 или чексуммы паролей не совпали), процедура возвращает -1 в d0. Особенно интересен конец процедуры:</p>
+<pre id="code" class="Assembler"><code>ROM:0001A4C8 cmpi.l #'MGFJ',(Pwd_Chars_1_4).l
+ROM:0001A4D2 bne.s Exit_Password_Check
+ROM:0001A4D4 cmpi.b #'H',(Pwd_Chars_5).l ; MGFJH - секретный пароль
+ROM:0001A4DC bne.s Exit_Password_Check
+ROM:0001A4DE st (Cheat_Flag).l ; FF-чит активирован</code></pre>
+<p>Это же явная проверка на определенный пароль (MGFJH)! Из процедуры видно, что даже, если введенный пароль MGFJH, игра напишет Invalid Code, но перед этим выставит флаг включения чита в определенной ячейке памяти. Метод поиска того, что же делает этот пароль остается за рамками данного документа. На самом деле, после введения этого пароля, если во время битвы выбрать белый флаг, миссия будет пройдена, а не провалена, как это обычно бывает. На момент написания документа (ноябрь 2008 года), Интернет об этом пароле не знает.<br />Что еще мы можем выудить из этой процедуры? Ну, можно написать небольшой брутфорс, который бы перебирал все пароли по порядку, начиная от AAAAA и заканчивая ZZZZZ, проверял их по этому алгоритму и выводил только те, что прошли проверку. Реализацию подобного алгоритма и исходники на паскале можно взять <a href="../../files/CannonFodder_PWD_Util.rar">здесь</a>.<br />Кстати, тут можно сразу проверить известный портал <a href="http://www.gamefaqs.com/console/genesis/code/586092.html">GameFaqs</a> на ноябрь 2008:</p>
+<blockquote>
+<p>Passwords<br />NTSC Passwords<br />Enter these on the load screen</p>
+<p>Password Effect<br />UTEFD 10<br />***<br />MMVI 24<br />***<br />PXJND Level 1</p>
+<p>Contributed By: AlaskaFox</p>
+<p>PAL Passwords<br />Levels 1-9 have the same passwords as the NTSC version.</p>
+<p>Password Effect<br />YJKCF 10<br />***<br />GWZED 22</p>
+<p>Contributed By: AlaskaFox</p>
+<p>Know Something We Don’t?</p>
+</blockquote>
+<p>Да уж, мы точно знаем что-то, чего не знаете Вы… Непонятно о каких PAL и NTSC паролях идет речь - судя по результатам работы брутфорса, это все пароли одной версии (а ведь другой-то и нет), просто с разным количеством солдат. Видимо 1-9 уровни, AlaskaFox проходил с одними и теми же потерями, а потом потери стали различаться и пароли на те же уровни тоже. Что это за четырехзначный пароль на 24 уровень? Мы-то уже знаем, что любой пароль на 24 уровень, даже если у него будет правильная чексумма, игра признает неправильным.<br />Ну и напоследок, можно взять попробовать реверснуть саму процедуру с целью написания генератора паролей. Есть, конечно, люди, которые могут и Triple RSA закейгенить, но я не из таких (к сожалению). Куда проще найти процедуру, которая выводит сделанный игрой пароль на экран и просто записать ее на языке высокого уровня.<br />Зайдя на экран вывода готового пароля, выясняем, что ячейки, в которых хранятся буквы пароля, не изменились (0x280E - 0x2812). Поэтому поставим останов на запись в этот диапазон и войдем на экран вывода пароля:<br /><img src="Debug_Write.png" alt="Debug_Write" /><br />Игра вывалилась по адресу 1A53E - это процедура записи готового пароля в ячейки:<br /><img src="Graph_of_Write_Password.png" alt="Graph_of_Write_Password" /><br />Видно, что процедуре через регистр d7 передается чексумма будущего пароля. Если посмотреть на возможные места вызова этой процедуры (в отладчике или просто анализируя участки кода выше), натыкаемся на такое место:<br /><img src="Graph_of_Pass_Output.png" alt="Graph_of_Pass_Output" /><br />Где встречаем уже знакомую нам процедуру CheckSum_Calc.Теперь у нас есть все, чтобы без проблем написать генератор паролей для игры. Исходники генератора на Паскале можно посмотреть <a href="../../files/CannonFodder_PWD_Util.rar">здесь</a>.А страничка со скриптом, вычисляющим пароли, как всегда, <a href="../../passgen/">здесь</a>.</p>
+<p>Напоследок, почему рекомендуется оформлять генератор паролей в виде .html страницы:</p>
+<ol style="list-style-type: decimal">
+<li>Размер. В большинстве случаев, размер страницы оказывается меньше, чем подобное приложение на ассемблере (и несравнимо меньше затраты времени на разработку). JavaScript обладает всеми необходимыми для генератора элементами формы (чекбоксы, выпадающие списки, области ввода, кнопки и т.п.). А скорости от генератора никто и не требует.</li>
+<li>Скрипт не исполняется на машине пользователя и не имеет доступа к файловой системе / реестру напрямую. Значит, вероятность того, что ваш генератор окажется вредоносным, минимальна - это успокаивает пользователя, который всегда с опаской запускает на своей машине исполняемый файл от незнакомого человека.</li>
+<li>JavaScript должен одинаково работать на любых браузерах под любыми операционными системами, что и не снилось исполняемым файлам.</li>
+<li>JavaScript элементарно встраивается в любую нужную вам HTML страницу, например вот так:
+<script type="text/javascript">
+function get_password() { var tmp = ‘’; hex = ’ABCDEFGHIJKLMNOPQRSTUVWXYZ’; for(i=0; i&lt;5; i++) tmp += hex.charAt(pwd[i]); return tmp }</li>
+</ol>
+<p>function ROR_W (Count, A) {var i, result</p>
+<p>for (i = 1; i&lt;= Count; i++) { result = (A &gt;&gt; 1)|((A &amp; 1) &lt;&lt; 15); A = result } return result }</p>
+<p>function Div_W(reg,oper) {var Hi, Lo, reg, oper, result</p>
+<p>Lo = Math.floor(reg / oper); Hi = reg - Lo*oper; result = Lo|(Hi &lt;&lt; 16); return result }</p>
+<p>//——————–Shuffle Data———————– function Shuffle_Data() { var d1_tmp, d7_tmp ;</p>
+<p>d7_tmp = 0xD;//особенность dbf d1_tmp = d0; do {d0 ^= (d1_tmp &gt;&gt; 1); d7_tmp– } while(d7_tmp != 0); d0 &amp;= 1 } //——————–End Shuffle Data——————</p>
+<p>//——————–CheckSum Calc———————– function CheckSum_Calc() { document.passform.check.checked = false; d0 = (document.passform.level.value &amp; 0xFF)%24; if (d0 == 0 | d0 &gt; 360) document.passform.check.checked = true; d1 = (document.passform.soldier.value &amp; 0x3FF)%361; if (d1 == 0 | d1 &gt; d0*15) document.passform.check.checked = true;</p>
+<p>CheckSum = 0; d7 = d0; d1 &lt;&lt;= 5; d7 |= d1; d0 = d7; Shuffle_Data(); d0 = ROR_W(1,d0); d7 |= d0; d0 = (ROR_W(1,d0)) ^ 0x4000; d7 |= d0; d6 = d7 &gt;&gt; 8; d6 = (d6 &amp; 0xFF00)|((d6 + (d7 &amp; 0xFF)) &amp; 0xFF); //add.b d6 = (ROR_W(2,d6)) &amp; 0x7F; CheckSum_L = d7; CheckSum_H = d6; CheckSum = ((CheckSum|d6) &lt;&lt; 16) |d7 } //——————– END CheckSum Calc——————</p>
+<p>//——————-Main——————————- function generate (){</p>
+<p>var d0,d1,d6,d7, CheckSum, d0_l,i; pwd = Array(5);</p>
+CheckSum_Calc(); for (i=0; i&lt;= 4; i++) { d0_l = Div_W(CheckSum_H,26); CheckSum_H = d0_l &amp; 0xFFFF; d0_l = (d0_l &amp; 0xFFFF0000)|CheckSum_L ; d0_l = Div_W(d0_l,26); CheckSum_L = d0_l &amp; 0xFFFF; pwd[i] = d0_l &gt;&gt; 16 } document.passform.password.value=get_password() }
+</script>
+<center>
+<span class="style1">SEGA Genesis/MD “Cannon Fodder” Password Generator</span><br>
+<form name="passform">
+<br>
+<table style="border:1px solid #000" class="text">
+<tr>
+<td>
+Level:
+<td>
+<input onchange="generate()" type="text" maxlength="3" size="3" value="1" name="level" />
+<tr>
+<td>
+Soldiers Alive:
+<td>
+<input onchange="generate()" type="text" maxlength="3" size="3" value="1" name="soldier" />
+<tr>
+<td>
+Password:
+<td>
+<input type="text" name="password" size="6" class="Code" readonly />
+<tr>
+<td>
+Hangs up the game:
+<td>
+<input type="checkbox" name="check" disabled="true" />
+<tr><tr><td><td>
+<input onclick="generate()" type="button" value="Generate" />
+</table>
+<span class="text">*Level_Number &lt; 24, Soldiers_Alive_Quantity &lt; 361;<br> *If Soldiers_Alive_Quantity &gt; (Level_Number x 15), password will hang up the game;<br> *If Soldiers_Alive_Quantity &lt; (Soldiers_On_Mission + 1), password will hang up the game.<br> </span>
+</form>
+        </center>
+<p>К тому же, исходник скрипта любопытствующие смогут всегда увидеть в исходном коде страницы.</p>
+<div id="disqus_thread"></div>
+<script type="text/javascript">   
+    var disqus_shortname = 'romhack'; // required: replace example with your forum shortname
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+<hr>
+<a href="http://jigsaw.w3.org/css-validator/check/referer"><img src="../../files/valid_css.png" alt="Valid CSS" border="0" align="right"></a><a href="http://validator.w3.org/check?uri=referer"><img src="../../files/valid_html.png" alt="Valid HTML" border="0" align="right"></a>
+</div></body></html>
+
+
+

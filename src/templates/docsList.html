@@ -1,0 +1,9 @@
+$partial("templates/articleTagsTable.html")$
+<ul>
+    $for(docs)$
+        <li>
+            <strong>[$date$] <a href="/doc/$folder$/">$title$</a> [$tags$]</strong>
+            $body$
+        </li>
+    $endfor$
+</ul>

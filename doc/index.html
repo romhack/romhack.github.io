@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="../css/syntax.css"></head>
 <body>
 
-<div id="sidebar"><img src="../images/headCut.png" alt="Logo" align="right"></div>
+<div id="sidebar"><img src="../files/head.png" alt="Logo" align="right"></div>
 <div id="content">
 <table cellpadding="3" cellspacing="3"><tbody><tr> 
 <td class="cl">  <a href="../" target="_parent">NEWS</a> </td>
@@ -27,42 +27,74 @@
 <ul>
     
         <li>
-            <strong>[February  6, 2o13] <a href="../doc/kruptarPlugins/">kruptar plugins</a> [MISC]</strong>
-            <p>This is <a href="http://example.com/" title="Title">an example</a> inline link. Mauris in lorem nisl. Maecenas tempus facilisis ante, eget viverra nisl tincidunt et. Donec turpis lectus, mattis ac malesuada a, accumsan eu libero. Morbi condimentum, tortor et tincidunt ullamcorper, sem quam pretium nulla, id convallis lectus libero nec turpis. Proin dapibus nisi id est sodales nec ultrices tortor pellentesque. Vivamus vel nisi ac lacus sollicitudin vulputate ac ut ligula. Nullam feugiat risus eget eros gravida in molestie sapien euismod. Nunc sed hendrerit orci. Nulla mollis consequat lorem ac blandit. Ut et turpis mauris. Nulla est odio, posuere id ullamcorper sit amet, tincidunt vel justo. Curabitur placerat tincidunt varius. Nulla vulputate, ipsum eu consectetur mollis, dui nibh aliquam neque, at ultricies leo ligula et arcu. Proin et mi eget tellus sodales lobortis. Sed tempor, urna vel pulvinar faucibus, lectus urna vehicula ante, at facilisis dolor odio at lorem. Morbi vehicula euismod urna, et imperdiet urna ornare vitae.</p>
-<p>Sed tincidunt sollicitudin ultrices. In hac habitasse platea dictumst. Morbi ligula lectus, egestas at ultricies nec, fringilla et tellus. Duis urna lorem, bibendum a ornare sed, euismod sed nunc. Aliquam tempor massa at velit fringilla fringilla. Praesent sit amet tempor felis. Maecenas id felis ac velit aliquam tempor a sit amet orci. Nunc placerat nulla pellentesque sem commodo cursus. Praesent quis sapien orci, quis ultricies augue. Nam vestibulum sem non augue semper tincidunt pellentesque ipsum volutpat. Duis congue, nunc a aliquam luctus, quam ante convallis nisi, ac pellentesque lacus orci vel turpis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse hendrerit nisl eu felis sagittis faucibus. Nunc eu congue lorem. Quisque non nibh nisi, et ultrices massa. Sed vitae erat vitae nulla pellentesque fermentum.</p>
-<p>Ut diam nunc, consectetur ut ultrices eu, iaculis sed felis. Sed lacinia, odio et accumsan luctus, arcu ipsum accumsan erat, sit amet malesuada libero lacus et velit. Donec accumsan tristique tristique. Proin a metus magna, vitae mattis nisl. Integer a libero ipsum. Mauris faucibus eleifend metus id sodales. Morbi ornare, nibh nec facilisis imperdiet, turpis sem commodo lorem, id commodo mauris metus vitae justo. Etiam at pellentesque tortor. Proin mollis accumsan ligula, nec tempus augue auctor quis. Nulla lacinia, mi quis lobortis auctor, nisi diam posuere dui, pulvinar feugiat dui libero eget quam. Fusce eu risus nunc, a consectetur orci. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas venenatis aliquet orci, a ultricies sem facilisis eu. Donec dolor purus, porta condimentum convallis nec, dignissim nec libero.</p>
-<p>Etiam rutrum ultricies dui, et interdum metus elementum et. Nulla sapien nunc, interdum tristique porttitor in, laoreet vitae mi. Ut vehicula auctor mauris sit amet bibendum. Phasellus adipiscing mattis libero, eget adipiscing erat dignissim at. Vivamus convallis malesuada metus nec cursus. Ut cursus, lorem eleifend sollicitudin condimentum, felis tortor sodales augue, ac tempus lacus ipsum vitae quam. Vestibulum vitae lacus non tortor vehicula iaculis faucibus quis massa.</p>
-<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis malesuada neque nec ante porttitor accumsan. Suspendisse potenti. Aliquam in lacus magna, imperdiet laoreet lectus. Praesent id diam nec ante commodo rhoncus nec vel augue. Pellentesque tortor massa, dignissim ut sagittis sed, hendrerit vitae nunc. Nam gravida, urna vitae hendrerit rutrum, felis augue vulputate tortor, ut varius velit libero nec lectus. In adipiscing massa in est scelerisque ullamcorper. Vivamus in nisi metus.</p>
+            <strong>[February  6, 2o13] <a href="../doc/kruptarPlugins/">Kruptar plugins coding</a> [MISC]</strong>
+            <p>Document describes plugin creation for Kruptar (text dumping/insertion utility). Unlike my <a href="http://magicteam.net/?page=documents&amp;show=%D0%9D%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D0%BE%D0%B2%20%D0%B4%D0%BB%D1%8F%20Kruptar%207">previous document</a>, here I will use C language and MinGW for compilation. Article is aimed at experienced reader.</p>
         </li>
     
         <li>
-            <strong>[September 12, 2oo9] <a href="../doc/psxArchives/">psx archives</a> [PSX]</strong>
-            <p>This is third document</p>
-<p>Vestibulum leo turpis, dignissim quis ultrices sit amet, iaculis ac ligula. Pellentesque tristique, velit eget scelerisque scelerisque, est dolor ultrices arcu, quis ullamcorper justo arcu luctus mauris. Integer congue molestie nisi id posuere. Fusce pellentesque gravida tempus. Integer viverra tortor nec eros mollis quis convallis sem laoreet. Nulla id libero ac erat varius laoreet. Proin sed est est. Curabitur lacinia fermentum lorem, elementum malesuada ipsum malesuada ut. Donec suscipit elit id leo vehicula mattis non sed leo. Morbi varius eleifend varius. Nulla vestibulum, neque vitae aliquam eleifend, nisi tellus placerat nunc, quis suscipit elit turpis eu tortor. Etiam euismod convallis lectus quis venenatis. Phasellus laoreet magna in nibh cursus eu egestas nulla convallis. Aliquam vel ullamcorper risus. Fusce dictum, massa id consequat viverra, nulla ante tristique est, a faucibus nisi enim nec dui. Donec metus ligula, condimentum at porttitor eget, lobortis at quam.</p>
-<p>Aenean vel libero in magna ultricies congue in a odio. Donec faucibus rutrum ornare. Fusce dictum eleifend fermentum. Vestibulum vel nibh a metus porttitor rhoncus. Pellentesque id quam neque, eget molestie arcu. Integer in elit vel neque viverra ultricies in eget massa. Nam ut convallis est. Pellentesque eros eros, sodales non vehicula et, tincidunt ut odio. Cras suscipit ultrices metus sit amet molestie. Fusce enim leo, vehicula sed sodales quis, adipiscing at ipsum.</p>
+            <strong>[September 12, 2oo9] <a href="../doc/psxArchives/">Архивы в играх PSX</a> [PSX]</strong>
+            <p>В этом документе коротко изложены основные причины возникновения архивов в играх под эту приствку и некоторые методы, облегчающие работу с ними. В качестве примера разобран простой архив игры Spider Man. Статья написана в сухом и кратком стиле и будет понятна более опытным ромхакерам.</p>
         </li>
     
         <li>
-            <strong>[November 28, 2oo8] <a href="../doc/segaPasswords/">sega passwords</a> [sega]</strong>
-            <p>This is second document</p>
-<p>Suspendisse pharetra ullamcorper sem et auctor. Suspendisse vitae tellus eu turpis dignissim gravida ut ut tortor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi aliquam sapien quis nisl sodales non aliquet nisl iaculis. Curabitur fermentum orci vel sapien pellentesque id condimentum metus vehicula. Curabitur turpis purus, scelerisque at interdum quis, placerat sit amet tortor. Aliquam erat volutpat.</p>
-<p>Integer posuere felis non arcu suscipit ullamcorper. Nam tempus risus venenatis orci sagittis eu aliquam ante tincidunt. Aenean vehicula ipsum id sapien tincidunt commodo. Aliquam erat volutpat. Curabitur vehicula libero ac turpis cursus consectetur. Praesent posuere egestas purus et dapibus. Mauris egestas, lectus vitae scelerisque ultricies, metus lorem tempor nisi, sed vehicula tortor mauris nec urna. Quisque urna tellus, facilisis at mollis eget, adipiscing in nisl. Proin quam arcu, euismod et imperdiet sed, ultricies sed orci.</p>
-<p>Nulla malesuada sem eget lectus scelerisque nec rhoncus metus interdum. In dui felis, rhoncus id scelerisque eget, vulputate id sem. Nulla facilisi. Vestibulum eleifend, metus dignissim lacinia ornare, magna nulla vehicula nisi, sed molestie mauris ipsum vel turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla urna leo, vehicula eget dignissim a, hendrerit ut risus. Fusce ultricies elementum placerat. Nam at dolor sed nisi mollis sollicitudin vitae at urna. Vestibulum iaculis adipiscing eros et mollis.</p>
-<p>Phasellus ultricies elit eu risus sagittis eu dictum ante ultrices. Nulla congue, augue ac placerat tempor, orci mi luctus nisi, at varius ipsum sem sed eros. Vivamus eget velit eget felis posuere ornare. In sed metus non est iaculis facilisis dapibus sit amet enim. Aliquam viverra tortor eget neque volutpat in auctor urna rutrum. Aliquam ligula augue, congue sit amet rutrum in, semper vel nulla. Sed tempus porttitor faucibus. Donec cursus sodales nulla, quis lacinia mi vehicula vel. Sed nec purus orci. Nam leo sapien, rutrum a ultrices quis, placerat vel ligula. Donec massa quam, pellentesque et molestie nec, hendrerit id mauris. In hac habitasse platea dictumst. Cras quis quam sem. Curabitur in arcu diam, in interdum mauris.</p>
-<p>Proin lorem sapien, iaculis et faucibus nec, dictum sed nunc. Pellentesque in purus justo. Vestibulum facilisis rutrum nisi, a egestas nunc suscipit sed. Ut quis tortor a arcu bibendum placerat non sed ante. Praesent orci sem, posuere sit amet cursus molestie, volutpat ut purus. Curabitur aliquam, purus in pharetra viverra, lorem leo aliquam tellus, vel consequat felis neque et mauris. Aliquam erat volutpat.</p>
+            <strong>[November 28, 2oo8] <a href="../doc/segaPasswords/">Изучение систем паролей в играх SEGA MD/Genesis</a> [SEGA]</strong>
+            <p>Здесь коротко изложены основные методы и инструменты, которыми можно воспользоваться при написании генераторов паролей к играм на Сеге. Документ, скорее, подойдет немного подготовленному читателю.</p>
         </li>
     
         <li>
-            <strong>[November 28, 2oo5] <a href="../doc/segaStuff/">sega stuff</a> [sega]</strong>
-            <p>This is sega document doc description</p>
-<p>Suspendisse pharetra ullamcorper sem et auctor. Suspendisse vitae tellus eu turpis dignissim gravida ut ut tortor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi aliquam sapien quis nisl sodales non aliquet nisl iaculis. Curabitur fermentum orci vel sapien pellentesque id condimentum metus vehicula. Curabitur turpis purus, scelerisque at interdum quis, placerat sit amet tortor. Aliquam erat volutpat.</p>
-<p>Integer posuere felis non arcu suscipit ullamcorper. Nam tempus risus venenatis orci sagittis eu aliquam ante tincidunt. Aenean vehicula ipsum id sapien tincidunt commodo. Aliquam erat volutpat. Curabitur vehicula libero ac turpis cursus consectetur. Praesent posuere egestas purus et dapibus. Mauris egestas, lectus vitae scelerisque ultricies, metus lorem tempor nisi, sed vehicula tortor mauris nec urna. Quisque urna tellus, facilisis at mollis eget, adipiscing in nisl. Proin quam arcu, euismod et imperdiet sed, ultricies sed orci.</p>
+            <strong>[November 15, 2oo8] <a href="../doc/segaDebug/">Отладка игр SEGA MD/Genesis</a> [SEGA]</strong>
+            <p>Статья, в которой рассказывается о методах нахождения графики, тайловых карт (текста) и спрайтов, которыми пользуюсь я сам. В качестве жертвы выбрана моя первая игра на железе Сеги - Alien Soldier. Документ предназначен для тех, кто уже немного узнал смысл отладки и чуть-чуть разбирается в ассемблере М68000.</p>
+        </li>
+    
+        <li>
+            <strong>[September  7, 2oo8] <a href="../doc/nesMte/">MTE и Отладка</a> [NES]</strong>
+            <p>Из этого документа можно узнать об общем способе нахождения текста (в документе разобран пример игры с МТЕ) методом отладки кода. Не требует знаний ассемблера.</p>
+        </li>
+    
+        <li>
+            <strong>[November  8, 2oo7] <a href="../doc/nesIda/">IDA и NES</a> [NES]</strong>
+            <p>Документ, повествующий о тонкостях применения популярнейшего дизассемблера IDA при анализе кода в играх под NES. Не для новичков.</p>
+        </li>
+    
+        <li>
+            <strong>[July 15, 2oo7] <a href="../doc/nesMemoryMapping/">IDA и NES</a> [NES]</strong>
+            <p>Любопытный документ от знаменитого Disch, особенно, если вы только начинаете. Популярно объясняется что такое мапперы, как они работают и немного затронута тесно связаная с этой областью тема указателей.</p>
+        </li>
+    
+        <li>
+            <strong>[February 24, 2oo7] <a href="../doc/nesTitleScreens/">Титульные экраны</a> [NES]</strong>
+            <p>Небольшой документик, посвящённый такому аспекту перевода, как перерисовка титульных экранов. Этот вопрос очень обширен и целью этого документа является всего лишь описание довольно простого и доступного для начинающих способа.</p>
+        </li>
+    
+        <li>
+            <strong>[January  1, 2oo7] <a href="../doc/nesPointers/">Указатели NES</a> [NES]</strong>
+            <p>Пожалуй, этот документ не появится больше нигде, кроме этой странички. Во-первых, потому что я его исправлял и переписывал практически полностью три раза (с сентября 2006) и до сих пор не уверен в его технической правильности, так что если заметите неточности, пишите мне. Во-вторых, этот документ… Кхм… Далеко не для всех :) И уж точно не для начинающих. Однако, по моему мнению, вышел довольно любопытный документ для тех, кто немного разбирался с процессом перевода приставочных игр.</p>
+        </li>
+    
+        <li>
+            <strong>[December  1, 2oo6] <a href="../doc/nesPalettes/">Цвета и палитры NES</a> [NES]</strong>
+            <p>Название документа говорит само за себя. Удивительно, но вопрос цветовых возможностей NES в области ромхакинга и перевода ещё до сих пор не был раскрыт ни в одном русскоязычном документе. В то время, как в зарубежных источниках полно информации как для самых начинающих так и для опытных. Пришло время исправить это недоразумение.</p>
+        </li>
+    
+        <li>
+            <strong>[October 29, 2oo6] <a href="../doc/fceudDoc3/">Документация к FCEUd #3</a> [NES]</strong>
+            <p>Существует и третий документ Parasyt’a, посвящённый сжатию. Однако, на мой взгляд, он был не слишком нагляден для новичка и касался графики, что не прибавляло ему популярности. Поэтому этот документ писал я сам. Документ освещает основные проблемы при работе со сжатыми данными, и более подробно останавливается на сжатии тайловых карт алгоритмом RLE (то есть на том что встречается в играх NES чаще всего остального). В качестве жертвы взята игра Contra Force.</p>
+        </li>
+    
+        <li>
+            <strong>[September  4, 2oo6] <a href="../doc/fceudDoc2/">Документация к FCEUd #2</a> [NES]</strong>
+            <p>Документ на этот раз посвящён процессу создания генераторов паролей для NES’овских игр [разобрана игра The Addams Family: Pugsley’s Scavenger Hunt]. Со своей стороны я постарался объяснить то, что когда-то ставило меня в тупик и даже присовокупил небольшой материал с информацией об операциях над двоичными величинами.</p>
+        </li>
+    
+        <li>
+            <strong>[August 31, 2oo6] <a href="../doc/fceudDoc1/">Документация к FCEUd #1</a> [NES]</strong>
+            <p>Отличная дока для тех, кто наконец понял, что надо совершенствоваться и решил изучить асм и перейти к применению отладчиков. Вторая вещь которую надо будет прочитать в такой ситуации - вот эта дока. Вторая, потому что первая - мануал по ассемблеру 6502 ;)</p>
         </li>
     
 </ul>
 
 <hr>
-<a href="http://jigsaw.w3.org/css-validator/check/referer"><img src="../images/valid_css.png" alt="Valid CSS" border="0" align="right"></a><a href="http://validator.w3.org/check?uri=referer"><img src="../images/valid_html.png" alt="Valid HTML" border="0" align="right"></a>
+<a href="http://jigsaw.w3.org/css-validator/check/referer"><img src="../files/valid_css.png" alt="Valid CSS" border="0" align="right"></a><a href="http://validator.w3.org/check?uri=referer"><img src="../files/valid_html.png" alt="Valid HTML" border="0" align="right"></a>
 </div></body></html>
 
 

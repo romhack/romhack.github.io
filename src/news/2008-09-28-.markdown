@@ -1,3 +1,0 @@
-﻿Перевод марлина давно вышел, а вот [русский генератор пароля](/passgen/Blue_Marlin_Password_Generator_Rus.htm) к нему я выложить забыл. И, чтобы закрыть все свои незавершенные проекты, думаю, стоит выложить [сырцы](/files/BattleCity_BackFromSource_Src.7z) Battle City - Back From Source на всеобщее обозрение. Может, кому и пригодятся.
-
-

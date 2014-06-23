@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Griever's stuff</title>
+    <link href="http://romhack.github.io/atom.xml" rel="self" />
+    <link href="http://romhack.github.io" />
+    <id>http://romhack.github.io/atom.xml</id>
+    <author>
+        <name>Griever</name>
+        <email>none</email>
+    </author>
+    <updated>2014-06-15T00:00:00Z</updated>
+    <entry>
+    <title>2014-06-15-</title>
+    <link href="http://romhack.github.io/news/2014-06-15-.html" />
+    <id>http://romhack.github.io/news/2014-06-15-.html</id>
+    <published>2014-06-15T00:00:00Z</published>
+    <updated>2014-06-15T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<p>Previous version of my CMS (pages were hosted at griever.magicteam.net) was written by me in PHP. Interested one can find it <a href="https://github.com/romhack/griever.magicteam-CMS">here</a>. The time has come to move at static generated site. These pages were generated with Hakyll and have many advantages, compared to my PHP CMS:</p>
+<ul>
+<li>Safety. I’ve written PHP CMS as my absolutely first project in PHP. I won’t be surprised if it had multiple security vulnerabilities. God forgive me for risking my translation group’s server.</li>
+<li>Speed. GitHub Pages is served with Nginx and automatically gzip’s content. No need to make minimalistic pages with poor design.</li>
+<li>Markdown. All my previous design experience can be expressed with one sentence: “put everything in &lt;pre&gt;, make it look like in notepad”. Now I’m not so radical. Lists, headings and code highlight make user experience better.</li>
+<li>Revision control system. Pages are just another <a href="https://github.com/romhack/romhack.github.io">Github repository</a>. Pages history can be found anytime, no backups needed.</li>
+<li>Page availability time. GitHub is self-explaining.</li>
+</ul>
+<p>I’ve added some Disqus for discussions. Hopefully, all pages are still strictly valid as HTML 4.01. Pages are rewritten into markdown in a short time, so there still can be some errors. Please let me know, if you’ll find them.</p>]]></summary>
+</entry>
+<entry>
+    <title>2013-06-02-</title>
+    <link href="http://romhack.github.io/news/2013-06-02-.html" />
+    <id>http://romhack.github.io/news/2013-06-02-.html</id>
+    <published>2013-06-02T00:00:00Z</published>
+    <updated>2013-06-02T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<p>﻿Wow, that’s been a while since my last activity here. I have no excuses - just real life and work :) I will not promise anything global here, especially as the RSS channel is still running. If you’re interested, just subscribe. I have cleared design - tutorials look better now everywhere, except IE. I don’t want to make a mess in HTML code for the sake of IE compatibility. More pages now meet all W3C markup requirements. And yes, I have switched to English. Use Google translate if necessary. For today brief <a href="/doc/kruptarPlugins">document</a>, which describes Kruptar’s plugin writing process in C.</p>]]></summary>
+</entry>
+<entry>
+    <title>2010-05-19-</title>
+    <link href="http://romhack.github.io/news/2010-05-19-.html" />
+    <id>http://romhack.github.io/news/2010-05-19-.html</id>
+    <published>2010-05-19T00:00:00Z</published>
+    <updated>2010-05-19T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<p>﻿Работа не пощадила моего свободного времени, так что я даже забыл какие новости произошли за полгода моего отсутствия на своей страничке, но из последних врезавшихся в память: мы переехали на новый хостинг, оставшись по <a href="http://www.magicteam.net">старому адресу</a>. И как-то в начале года ради интереса я привел основые страницы к требованиям валидации W3C markup. А ещё я в очередной раз изобрёл велосипед и прикрутил к своим статьям комментарии, милости просим всех желающих. Старые новости, как всегда, <a href="/archive.html">здесь</a>.</p>]]></summary>
+</entry>
+<entry>
+    <title>2009-12-08-</title>
+    <link href="http://romhack.github.io/news/2009-12-08-.html" />
+    <id>http://romhack.github.io/news/2009-12-08-.html</id>
+    <published>2009-12-08T00:00:00Z</published>
+    <updated>2009-12-08T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<p>﻿Внезапная <a href="/doc/psxArchives">статья</a> об архивах под новую для меня систему PSX.</p>]]></summary>
+</entry>
+<entry>
+    <title>2009-05-26-</title>
+    <link href="http://romhack.github.io/news/2009-05-26-.html" />
+    <id>http://romhack.github.io/news/2009-05-26-.html</id>
+    <published>2009-05-26T00:00:00Z</published>
+    <updated>2009-05-26T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<p>﻿Закончился <a href="http://www.rrc2008.tu2.ru/?Glavnaya_stranica">Russian Romhacking Compo 2008</a>. По итогам несколько моих поделок получили медальки. Для меня самым забавным показалось, что доку, которую я написал от начала до конца за один вечер, оценили выше проектов, над которыми я потел больше года. Разумеется, результат зависел от множества факторов, но все равно интересно. Спасибо титаническим усилиям Tigran’а.</p>]]></summary>
+</entry>
+
+</feed>

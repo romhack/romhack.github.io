@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^files/(.*)$ www.romhack.github.io/files/$1

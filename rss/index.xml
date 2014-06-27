@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Griever's stuff</title>
-    <link href="http://romhack.github.io/atom.xml" rel="self" />
+    <link href="http://romhack.github.io/rss/index.xml" rel="self" />
     <link href="http://romhack.github.io" />
-    <id>http://romhack.github.io/atom.xml</id>
+    <id>http://romhack.github.io/rss/index.xml</id>
     <author>
         <name>Griever</name>
         <email>siteName@gmail.com</email>
@@ -23,7 +23,7 @@
 <li>Revision control system. Pages are just another <a href="https://github.com/romhack/romhack.github.io">Github repository</a>. Pages history can be found anytime, no backups needed.</li>
 <li>Page availability time. GitHub is self-explaining.</li>
 </ul>
-<p>I’ve also added some Disqus and <a href="/atom.xml">Atom feed</a> for your convenience. Hopefully, all pages are still strictly valid as HTML 4.01. Pages are rewritten into markdown in a short time, so there still can be some errors. Please let me know, if you’ll find them.</p>]]></summary>
+<p>I’ve also added some Disqus and <a href="/rss/">Atom feed</a> for your convenience. Hopefully, all pages are still strictly valid as HTML 4.01. Pages are rewritten into markdown in a short time, so there still can be some errors. Please let me know, if you’ll find them.</p>]]></summary>
 </entry>
 <entry>
     <title>2013-06-02-</title>

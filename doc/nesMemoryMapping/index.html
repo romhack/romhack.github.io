@@ -1,22 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Маппинг памяти NES</title>
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
 <link rel="stylesheet" type="text/css" href="../../css/syntax.css"></head>
 <body>
 
-<div id="sidebar"><img src="../../files/head.png" alt="Logo" align="right"></div>
+<div id="sidebar"><div style="text-align:right"><img src="../../files/head.png" alt="Logo"></div></div>
 <div id="nav">
 <table cellpadding="3" cellspacing="3"><tbody><tr> 
-<td class="cl">  <a href="../../" target="_parent">NEWS</a> </td>
-<td class="cl">  <a href="../../doc/" target="_parent">ARTiCLES</a> </td>
-<td class="cl">  <a href="../../passgen/" target="_parent">PASSGENS</a> </td>
-<td class="cl">  <a href="../../archive.html" target="_parent">ARCHiVE</a> </td>
-<td class="cl">  <a href="../../about.html" target="_parent">ABOUT</a> </td>
+<td class="cl">  <a href="../../">NEWS</a> </td>
+<td class="cl">  <a href="../../doc/">ARTiCLES</a> </td>
+<td class="cl">  <a href="../../passgen/">PASSGENS</a> </td>
+<td class="cl">  <a href="../../archive.html">ARCHiVE</a> </td>
+<td class="cl">  <a href="../../about.html">ABOUT</a> </td>
 </tr></tbody></table></div>
 <div id="content">
-
-            <h1>Маппинг памяти NES</h1>
+    <h1>Маппинг памяти NES</h1>
 <p><strong>Введение</strong>.<br />Существует множество документов, повествующих на тему 6502 и ассемблерного хакинга игр NES. Они хорошо описывают как можно модифицировать игровой код, чтобы он делал что-нибудь новое. Некоторые даже рассказывают как вставить свой собственный код и прыгнуть к нему, добавляя к своему хаку новые возможности. Однако есть область, играющая решающее значение в понимании всего этого, которая либо мало объяснена, либо не освещена вообще. У читателей возникало множество вопросов.<br />Я говорю, разумеется, о мапперах. Часто встречаются такие выражения, как “маппер” или “банкование PRG”, однако мало кто знает, что это означает или как это работает. Если вы не принадлежите к этой группе людей, надеюсь, документ прольёт свет на этот вопрос.<br />В основном, этот документ будет рассказывать о переключениях PRG/CHR банков мапперами. Другие аспекты, связанные с мапперами (такие как генерирование IRQ, зеркалирование, звук и т.п.) здесь описаны не будут.</p>
 <p><strong>Что вам нужно знать?</strong> Этот документ не будет рассказывать о процессоре 6502. Предполагается, что читатель знаком с ним, сомневаюсь, что большая часть информации будет вам полезна, если это не так.<br />Однако вы можете ничего не знать об архитектуре NES и документ немного расскажет об основных областях взаимодействия маппера и приставки.<br />Хотя и предполагается, что вы не очень опытны в этом вопросе, но чтобы хорошо усвоить информацию, возможно, вам придётся несколько раз перечитать документ.<br /><strong>Смещения в ROMе против Адресов CPU</strong><br />Смещение в ROMе и адрес CPU (центральный процессор NES) - две абсолютно разные вещи. Первый показывает позицию в .nes файле, тогда как второй показывает положение в памяти CPU. Мапперы - ключ к переходу от первого ко второму и наоборот. В этом документе… Смещения в ROMе будут с префиксом ‘0x’, а адреса CPU - с ‘$’.<br />Между прочим, некоторые документы и туториалы ошибочно называют адреса CPU “смещениями в RAM (ОЗУ)” (фактически, это можно увидеть и в FCEUXD). Хочется поправить авторов этих документов, так как этот термин неверен и не подходит к нашей ситуации (мы не всегда имеем дело именно с RAM и это не совсем “смещение” от чего-то). Убедительно прошу удерживаться от употребления такого термина, и просто использовать слово “адрес” для адресов CPU и “смещение” для смещений ROMа. Может показаться, что тут большой разницы нет, но в дальнейшем могут возникнуть сложности, если нужно будет различать что является RAM, а что нет (и когда приходится иметь дело с настоящими смещениями в RAM).</p>
 <p><strong>Взгляд на распределение памяти NES </strong>.<br />Первый шаг к пониманию первичной функции мапперов (маппинг памяти) - изучение распределения памяти NES. Возможно, вы видели подобные таблицы и в других документах по NES, но обычно в них пространства картриджа и NES слиты воедино: Распределение памяти CPU NES:</p>
@@ -246,9 +245,10 @@ CHR:
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-<hr>
-<a href="http://jigsaw.w3.org/css-validator/check/referer"><img src="../../files/valid_css.png" alt="Valid CSS" border="0" align="right"></a><a href="http://validator.w3.org/check?uri=referer"><img src="../../files/valid_html.png" alt="Valid HTML" border="0" align="right"></a>
-</div></body></html>
+<hr><div id="w3c">
+<a href="http://validator.w3.org/check?uri=referer"><img style="border:0;width:88px;height:31px" src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict"></a>
+<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS"></a>
+</div></div></body></html>
 
 
 

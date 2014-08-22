@@ -137,7 +137,7 @@ Near-Pointer Variables:
 </ul>
 <ol style="list-style-type: decimal">
 <li><p>Compilation and debug<br />Kruptar uses plugins even in general plaintext cases. Default plugin is Standard.kpl - gets offset to the string, searches for a line terminator and copies one string to Kruptar’s buffer. Plugin is just a compiled dll, of course. Natively it should be created with Delphi. For some examples of Delphi plugin coding you can check <a href="http://magicteam.net/?page=documents&amp;show=%D0%9D%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%BF%D0%BB%D0%B0%D0%B3%D0%B8%D0%BD%D0%BE%D0%B2%20%D0%B4%D0%BB%D1%8F%20Kruptar%207">this</a>. Delphi - is the commercial proprietary IDE and Kruptar is written in it. That will be the issue: Kruptar uses ‘sharemem’ unit for memory share with it’s plugins. Even dlls, compiled with Free Pascal are not compatible with Kruptar, as Delphi string has to be managed by the Delphi runtime. In addition, Delphi uses Object Pascal dialect, which means, we have to rewrite in Pascal open-source C code for compression process, for instance. Our target - is to create fully functional GCC compiled Kruptar plugin. And here is the plan: we’ll compile an <a href="http://en.wikipedia.org/wiki/Adapter_design_pattern">adapter</a> plugin in Delphi, which will transmit data between our gcc dll and Kruptar. This adapter is named ‘c_plugin.kpl’, it can be found in zip archive below this section and should be placed in Kruptar’s Lib directory. At Kurptar’s load, plugin asks for a path to dll, we created with gcc. During project creation, c_plugin.kpl is specified in grPlugin and extraction/insertion is committed now via our code.<br />It is time to open up code for our examples <a href="https://github.com/Grivr/Kruptar_C_Plugins">here</a> or <a href="../../files/Kruptar_C_Plugins.zip">here</a>.<br />All examples can be compiled with MinGW. Setting up environment, gcc and gdb usage is beyond this document’s scope. I will just explain few tricks.<br />In Makefile you can find:<br /><code>$(CC) $(CFLAGS) -shared -o $(TARGET).dll $(TARGET).o -Wl,--kill-at</code><br /><code>&quot;--kill-at&quot;</code> is a must for any Delphi host application because of function <a href="http://www.willus.com/mingw/yongweiwu_stdcall.html">decorations</a>. Otherwise, mandatory functions, like “GetEncodeSize” will be decorated to “GetEncodeSize@4” by compiler and c_plugin.kpl will not accept your plugin dll.<br /><code>&quot;-shared&quot;</code> is needed for every dll, of course.<br />For debug, I prefer to use standard gdb attaching to host application, as Kruptar is not open source anyway (and will not be in the foreseeable future).</p>
-<pre id="codeBorder"><code>gdb gcc_dll.dll
+<pre><code>gdb gcc_dll.dll
 
 Reading symbols from d:\Kruptar\C_plugin\gcc_dll.dll...done.
 (gdb) attach 3536//that's current PID for Kruptar
@@ -168,7 +168,7 @@ Breakpoint 1, GetEncodeSize@4 (data=0x12f6dc) at gcc_dll.c:41
 41      int stringsCount =  data-&gt;tStringsCount();//we're back in our dll
 ...</code></pre></li>
 <li><p>Mandatory functions and PluginData.<br />Interface for c_plugin.kpl is placed in gcc_dll.h and used by all C plugins:<br />Structure tPluginData is used to pass all necessary data between Kruptar and C plugin.</p>
-<pre class="sourceCode c" id="codeBorder"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> __attribute__((__packed__)){
+<pre class="sourceCode c"><code class="sourceCode c"><span class="kw">typedef</span> <span class="kw">struct</span> __attribute__((__packed__)){
     <span class="dt">void</span> *rom;<span class="co">//ROM is copied entirely to dynamic memory by Kruptar, so plugin can work with all ROM contents</span>
 	<span class="dt">long</span> <span class="dt">int</span> romSize;
 	<span class="dt">long</span> <span class="dt">int</span> param;<span class="co">//contains ptStringLength in case your text is fixed string</span>
@@ -187,7 +187,7 @@ Breakpoint 1, GetEncodeSize@4 (data=0x12f6dc) at gcc_dll.c:41
 
 }tPluginData;</code></pre>
 <p>All C plugin dlls must have 3 functions:</p>
-<pre class="sourceCode c" id="codeBorder"><code class="sourceCode c"><span class="dt">void</span> Decode (tPluginData *data, <span class="dt">long</span> <span class="dt">int</span> offset);
+<pre class="sourceCode c"><code class="sourceCode c"><span class="dt">void</span> Decode (tPluginData *data, <span class="dt">long</span> <span class="dt">int</span> offset);
 <span class="co">/*</span>
 <span class="co">Decodes/uncompresses string from ROM. </span>
 <span class="co">offset (in ROM) is calculated by Kruptar, using pointer value</span>

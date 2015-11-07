@@ -8,8 +8,16 @@
         <name>Griever</name>
         <email>siteName@gmail.com</email>
     </author>
-    <updated>2014-06-15T00:00:00Z</updated>
+    <updated>2015-11-07T00:00:00Z</updated>
     <entry>
+    <title>2015-11-07-</title>
+    <link href="http://romhack.github.io/news/2015-11-07-.html" />
+    <id>http://romhack.github.io/news/2015-11-07-.html</id>
+    <published>2015-11-07T00:00:00Z</published>
+    <updated>2015-11-07T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<p><a href="https://github.com/romhack/BC-BackFromSource">Battle City - Back From Source</a> was updated: fixed respawn time overflow after 42nd Level and Life bonus, taken by enemy now works correctly. Enemy counter at the right side is also updates accordingly. Thanks a lot to Max Silver for testing. Small page design fix was also done.</p>]]></summary>
+</entry>
+<entry>
     <title>2014-06-15-</title>
     <link href="http://romhack.github.io/news/2014-06-15-.html" />
     <id>http://romhack.github.io/news/2014-06-15-.html</id>
@@ -48,14 +56,6 @@
     <published>2009-12-08T00:00:00Z</published>
     <updated>2009-12-08T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>﻿Внезапная <a href="/doc/psxArchives">статья</a> об архивах под новую для меня систему PSX.</p>]]></summary>
-</entry>
-<entry>
-    <title>2009-05-26-</title>
-    <link href="http://romhack.github.io/news/2009-05-26-.html" />
-    <id>http://romhack.github.io/news/2009-05-26-.html</id>
-    <published>2009-05-26T00:00:00Z</published>
-    <updated>2009-05-26T00:00:00Z</updated>
-    <summary type="html"><![CDATA[<p>﻿Закончился <a href="http://www.rrc2008.tu2.ru/?Glavnaya_stranica">Russian Romhacking Compo 2008</a>. По итогам несколько моих поделок получили медальки. Для меня самым забавным показалось, что доку, которую я написал от начала до конца за один вечер, оценили выше проектов, над которыми я потел больше года. Разумеется, результат зависел от множества факторов, но все равно интересно. Спасибо титаническим усилиям Tigran’а.</p>]]></summary>
 </entry>
 
 </feed>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Griever's stuff</title>
-    <link href="http://romhack.github.io/rss/index.xml" rel="self" />
-    <link href="http://romhack.github.io" />
-    <id>http://romhack.github.io/rss/index.xml</id>
+    <link href="https://romhack.github.io/rss/index.xml" rel="self" />
+    <link href="https://romhack.github.io" />
+    <id>https://romhack.github.io/rss/index.xml</id>
     <author>
         <name>Griever</name>
         <email>siteName@gmail.com</email>
@@ -11,8 +11,8 @@
     <updated>2016-07-27T00:00:00Z</updated>
     <entry>
     <title>2016-07-27-</title>
-    <link href="http://romhack.github.io/news/2016-07-27-.html" />
-    <id>http://romhack.github.io/news/2016-07-27-.html</id>
+    <link href="https://romhack.github.io/news/2016-07-27-.html" />
+    <id>https://romhack.github.io/news/2016-07-27-.html</id>
     <published>2016-07-27T00:00:00Z</published>
     <updated>2016-07-27T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>﻿Some small page design updates again. Nothing special to tell about, but I’m still with the scene: as a long-delayed finish, I’ve written some compression tools for <a href="http://forum.goldensunhacking.net/index.php?topic=2624.15">‘Golden Sun’</a> (GBA) and <a href="http://chief-net.ru/index.php?option=com_content&amp;task=view&amp;id=14&amp;Itemid=39">‘Jewel Master’</a> (Genesis). Both had sophisticated compression schemes and ‘Golden Sun’, basically, was my personal long-term arch-enemy.</p>
@@ -20,8 +20,8 @@
 </entry>
 <entry>
     <title>2015-11-07-</title>
-    <link href="http://romhack.github.io/news/2015-11-07-.html" />
-    <id>http://romhack.github.io/news/2015-11-07-.html</id>
+    <link href="https://romhack.github.io/news/2015-11-07-.html" />
+    <id>https://romhack.github.io/news/2015-11-07-.html</id>
     <published>2015-11-07T00:00:00Z</published>
     <updated>2015-11-07T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p><a href="https://github.com/romhack/BC-BackFromSource">Battle City - Back From Source</a> was updated: fixed respawn time overflow after 42nd Level and Life bonus, taken by enemy now works correctly. Enemy counter at the right side is also updates accordingly. Thanks a lot to Max Silver for testing.</p>
@@ -29,8 +29,8 @@
 </entry>
 <entry>
     <title>2014-06-15-</title>
-    <link href="http://romhack.github.io/news/2014-06-15-.html" />
-    <id>http://romhack.github.io/news/2014-06-15-.html</id>
+    <link href="https://romhack.github.io/news/2014-06-15-.html" />
+    <id>https://romhack.github.io/news/2014-06-15-.html</id>
     <published>2014-06-15T00:00:00Z</published>
     <updated>2014-06-15T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>Previous version of my CMS (pages were hosted at griever.magicteam.net) was written by me in PHP. Interested one can find it <a href="https://github.com/romhack/griever.magicteam-CMS">here</a>. The time has come to move to a static generated site. These pages were generated with <a href="http://jaspervdj.be/hakyll/">Hakyll</a> and have many advantages, compared to my PHP CMS:</p>
@@ -45,16 +45,16 @@
 </entry>
 <entry>
     <title>2013-06-02-</title>
-    <link href="http://romhack.github.io/news/2013-06-02-.html" />
-    <id>http://romhack.github.io/news/2013-06-02-.html</id>
+    <link href="https://romhack.github.io/news/2013-06-02-.html" />
+    <id>https://romhack.github.io/news/2013-06-02-.html</id>
     <published>2013-06-02T00:00:00Z</published>
     <updated>2013-06-02T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>﻿Wow, that’s been a while since my last activity here. I have no excuses - just real life and work :) I will not promise anything global here, especially as the RSS channel is still running. If you’re interested, just subscribe. I have cleared design - tutorials look better now everywhere, except IE. I don’t want to make a mess in HTML code for the sake of IE compatibility. More pages now meet all W3C markup requirements. And yes, I have switched to English. Use Google translate if necessary. For today brief <a href="/doc/kruptarPlugins">document</a>, which describes Kruptar’s plugin writing process in C.</p>]]></summary>
 </entry>
 <entry>
     <title>2010-05-19-</title>
-    <link href="http://romhack.github.io/news/2010-05-19-.html" />
-    <id>http://romhack.github.io/news/2010-05-19-.html</id>
+    <link href="https://romhack.github.io/news/2010-05-19-.html" />
+    <id>https://romhack.github.io/news/2010-05-19-.html</id>
     <published>2010-05-19T00:00:00Z</published>
     <updated>2010-05-19T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>﻿Работа не пощадила моего свободного времени, так что я даже забыл какие новости произошли за полгода моего отсутствия на своей страничке, но из последних врезавшихся в память: мы переехали на новый хостинг, оставшись по <a href="http://www.magicteam.net">старому адресу</a>. И как-то в начале года ради интереса я привел основые страницы к требованиям валидации W3C markup. А ещё я в очередной раз изобрёл велосипед и прикрутил к своим статьям комментарии, милости просим всех желающих. Старые новости, как всегда, <a href="/archive.html">здесь</a>.</p>]]></summary>

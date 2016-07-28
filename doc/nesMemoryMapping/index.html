@@ -2,22 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+body {line-height: 1.5; padding: 4em 1em;}
+h2 {margin-top: 1em; padding-top: 1em;}
+.cl{border-style:solid; border-width:1px; text-align:center; width:100px;} .cl a {text-decoration:none;}
+.dl{border-style:solid; border-width:1px; text-align:center; width:50px;}
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode, table.sourceCode pre { margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; }
+td.lineNumbers { border-right: 1px solid #AAAAAA; text-align: right; color: #AAAAAA; padding-right: 5px; padding-left: 5px; } td.sourceCode { padding-left: 5px; }
+.sourceCode span.kw { color: #007020; font-weight: bold; } .sourceCode span.dt { color: #902000; } .sourceCode span.dv { color: #40a070; } .sourceCode span.bn { color: #40a070; } .sourceCode span.fl { color: #40a070; } .sourceCode span.ch { color: #4070a0; } .sourceCode span.st { color: #4070a0; } .sourceCode span.co { color: #60a0b0; font-style: italic; } .sourceCode span.ot { color: #007020; } .sourceCode span.al { color: red; font-weight: bold; } .sourceCode span.fu { color: #06287e; } .sourceCode span.re { } .sourceCode span.er { color: red; font-weight: bold; }
+</style>
 <title>Маппинг памяти NES</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css" />
-<link rel="stylesheet" type="text/css" href="../../css/syntax.css" />
 <link rel="icon" type="image/png" href="../../files/favicon.png" />
 </head><body>
-<div id="sidebar"><img src="../../files/head.svg" width="90%" alt="SVG not supported" /></div>
-<div id="nav">
-<table cellpadding="3" cellspacing="3"><tbody><tr> 
-<td class="cl">  <a href="../../">NEWS</a> </td>
-<td class="cl">  <a href="../../doc/">ARTiCLES</a> </td>
-<td class="cl">  <a href="../../passgen/">PASSGENS</a> </td>
-<td class="cl">  <a href="../../archive.html">ARCHiVE</a> </td>
-<td class="cl">  <a href="../../about.html">ABOUT</a> </td>
-</tr></tbody></table></div>
-<div id="content">
-	<h1>Маппинг памяти NES</h1>
+<div style="position:absolute; top:0; bottom:0; left:0; width:25%; text-align: right">
+<img src="../../files/head.svg" width="90%" alt="SVG not supported" /></div>
+<div style=" margin: 0 auto; font-size: medium; width: 50%; text-align: justify; color: black; font-family: 'Georgia', serif;">
+ <table cellpadding="3" cellspacing="3"><tbody><tr> 
+ <td class="cl">  <a href="../../">NEWS</a> </td>
+ <td class="cl">  <a href="../../doc/">ARTiCLES</a> </td>
+ <td class="cl">  <a href="../../passgen/">PASSGENS</a> </td>
+ <td class="cl">  <a href="../../archive.html">ARCHiVE</a> </td>
+ <td class="cl">  <a href="../../about.html">ABOUT</a> </td>
+ </tr></tbody></table>
+ <h1>Маппинг памяти NES</h1>
 <p><strong>Введение</strong>.<br />
 Существует множество документов, повествующих на тему 6502 и ассемблерного хакинга игр NES. Они хорошо описывают как можно модифицировать игровой код, чтобы он делал что-нибудь новое. Некоторые даже рассказывают как вставить свой собственный код и прыгнуть к нему, добавляя к своему хаку новые возможности. Однако есть область, играющая решающее значение в понимании всего этого, которая либо мало объяснена, либо не освещена вообще. У читателей возникало множество вопросов.<br />
 Я говорю, разумеется, о мапперах. Часто встречаются такие выражения, как “маппер” или “банкование PRG”, однако мало кто знает, что это означает или как это работает. Если вы не принадлежите к этой группе людей, надеюсь, документ прольёт свет на этот вопрос.<br />
@@ -272,9 +279,5 @@ CHR:
 </ul>
 <p><strong>Замечание напоследок</strong><br />
 Когда речь идет о мапперах… Речь идет обо всем. “Маппер” - это практически комбинация схем картриджа, соединеняющих элементов, контроллера памяти и всего остального, что есть на картридже. Теоретически, на картридже возможно размещение дополнительного процессора!<br />
-Таким образом “правил” для мапперов существовать не может. Весь этот материал нужно воспринимать, постоянно держа в голове, что он не высечен в камне… И что есть мапперы, которые выделяются из общей массы.</p>
-
-
-
-
-
+Таким образом “правил” для мапперов существовать не может. Весь этот материал нужно воспринимать, постоянно держа в голове, что он не высечен в камне… И что есть мапперы, которые выделяются из общей массы.</p><hr />
+</div></body></html>

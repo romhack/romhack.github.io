@@ -2,22 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+body {line-height: 1.5; padding: 4em 1em;}
+h2 {margin-top: 1em; padding-top: 1em;}
+.cl{border-style:solid; border-width:1px; text-align:center; width:100px;} .cl a {text-decoration:none;}
+.dl{border-style:solid; border-width:1px; text-align:center; width:50px;}
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode, table.sourceCode pre { margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; }
+td.lineNumbers { border-right: 1px solid #AAAAAA; text-align: right; color: #AAAAAA; padding-right: 5px; padding-left: 5px; } td.sourceCode { padding-left: 5px; }
+.sourceCode span.kw { color: #007020; font-weight: bold; } .sourceCode span.dt { color: #902000; } .sourceCode span.dv { color: #40a070; } .sourceCode span.bn { color: #40a070; } .sourceCode span.fl { color: #40a070; } .sourceCode span.ch { color: #4070a0; } .sourceCode span.st { color: #4070a0; } .sourceCode span.co { color: #60a0b0; font-style: italic; } .sourceCode span.ot { color: #007020; } .sourceCode span.al { color: red; font-weight: bold; } .sourceCode span.fu { color: #06287e; } .sourceCode span.re { } .sourceCode span.er { color: red; font-weight: bold; }
+</style>
 <title>Цвета и палитры NES</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css" />
-<link rel="stylesheet" type="text/css" href="../../css/syntax.css" />
 <link rel="icon" type="image/png" href="../../files/favicon.png" />
 </head><body>
-<div id="sidebar"><img src="../../files/head.svg" width="90%" alt="SVG not supported" /></div>
-<div id="nav">
-<table cellpadding="3" cellspacing="3"><tbody><tr> 
-<td class="cl">  <a href="../../">NEWS</a> </td>
-<td class="cl">  <a href="../../doc/">ARTiCLES</a> </td>
-<td class="cl">  <a href="../../passgen/">PASSGENS</a> </td>
-<td class="cl">  <a href="../../archive.html">ARCHiVE</a> </td>
-<td class="cl">  <a href="../../about.html">ABOUT</a> </td>
-</tr></tbody></table></div>
-<div id="content">
-	<h1>Цвета и палитры NES</h1>
+<div style="position:absolute; top:0; bottom:0; left:0; width:25%; text-align: right">
+<img src="../../files/head.svg" width="90%" alt="SVG not supported" /></div>
+<div style=" margin: 0 auto; font-size: medium; width: 50%; text-align: justify; color: black; font-family: 'Georgia', serif;">
+ <table cellpadding="3" cellspacing="3"><tbody><tr> 
+ <td class="cl">  <a href="../../">NEWS</a> </td>
+ <td class="cl">  <a href="../../doc/">ARTiCLES</a> </td>
+ <td class="cl">  <a href="../../passgen/">PASSGENS</a> </td>
+ <td class="cl">  <a href="../../archive.html">ARCHiVE</a> </td>
+ <td class="cl">  <a href="../../about.html">ABOUT</a> </td>
+ </tr></tbody></table>
+ <h1>Цвета и палитры NES</h1>
 <ol style="list-style-type: decimal">
 <li><strong>Разминка</strong><br />
 Перед тем как начать, лучше сразу понять, что нужно знать, чтобы полностью понять этот документ. Во-первых, нужно знать основы программирования на ассемблере. (Основы просты: нужно понимать каждую команду и режимы адресации команд). Так же нужно быть сведущим в двоичной системе счисления, включая и вычисления в ней. В общем, для того чтобы начать пользоваться FCEUd нужно не так много. Документы по ассемблеру процессоров семейства 6502 и разные доки можно найти на Zophar Domain и ROMHacking.net. Или просто используйте поиск со словами “6502 Assembly” в Гугле.<br />
@@ -97,9 +104,5 @@ $C64F:A8 TAY</code></pre>
 Внутри PPU есть отдельно адресуемая (от основного адресного пространства PPU - 16k) память спрайтов, размером 256 байт. Эта память хранит “записи” о 64 спрайтах, размер каждой записи 4 байта. Первый байт - координата по вертикали второй - индекс спрайта, третий - искомый нами атрибут, четвёртый - координата по горизонтали. Так как атрибут присвоит каждому спрайту в отдельности, то появляется возможность выделять под номер части палитры не весь байт, а только младшие два бита. Остальные биты отданы под другие атрибуты: например, отражение и приоритет спрайта. Фактически, поиск атрибута спрайта будет сводиться к нахождению спрайтового буфера и нахождению нужного нам спрайта, а следующий за индексом спрайта байт будет являться искомым байтом атрибута.<br />
 Итак, предположим, что нам нужно поменять цвет головы главного героя: у обычных зайцев он, вроде, серый =) Находим часть палитры, которой присвоен наш спрайт. Это вполне можно сделать и визуально (уж точно быстрее), однако в обучающих целях попробуем найти эту часть через атрибут спрайта. Находим спрайтовый буфер (эта операция описана в доке CaH4e3’a) - здесь он расположен по адресу $200. Находим индекс нашего спрайта (хотя в памяти PPU несколько голов - нужная нам голова имеет индекс $03) по адресу $0215. Соответственно, атрибут будет $02 = 00000010b, это означает, что тайлу головы присвоена третья часть палитры, так как младшие два бита составляют двойку в десятичной системе. И теперь попробуем поменять эту часть палитры. Поиск всей палитры производится так же, как и для картинок. Правда, в нашем случае палитры спрайтов хранятся несколько иначе, чем палитры картинок, но принципиально поиск ничем не отличается от описанного выше. Последние 8 цветов палитры хранятся по адресам РОМа $11c3d - $11c44. Наш зелёный ($29) цвет по адресу $11c40 заменяем на нормальный серый ($2D)цвет: <img src="Pal6.png" alt="Pal6.png" /><br />
 При необходимости можно переназначить голову на другие части палитры, однако не стоит забывать, что голова состоит не из одного тайла, т.е. переназначать на другие части придётся и другие тайлы, составляющие голову (уши и прочее).</p></li>
-</ol>
-
-
-
-
-
+</ol><hr />
+</div></body></html>

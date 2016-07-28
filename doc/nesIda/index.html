@@ -2,22 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+body {line-height: 1.5; padding: 4em 1em;}
+h2 {margin-top: 1em; padding-top: 1em;}
+.cl{border-style:solid; border-width:1px; text-align:center; width:100px;} .cl a {text-decoration:none;}
+.dl{border-style:solid; border-width:1px; text-align:center; width:50px;}
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode, table.sourceCode pre { margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; }
+td.lineNumbers { border-right: 1px solid #AAAAAA; text-align: right; color: #AAAAAA; padding-right: 5px; padding-left: 5px; } td.sourceCode { padding-left: 5px; }
+.sourceCode span.kw { color: #007020; font-weight: bold; } .sourceCode span.dt { color: #902000; } .sourceCode span.dv { color: #40a070; } .sourceCode span.bn { color: #40a070; } .sourceCode span.fl { color: #40a070; } .sourceCode span.ch { color: #4070a0; } .sourceCode span.st { color: #4070a0; } .sourceCode span.co { color: #60a0b0; font-style: italic; } .sourceCode span.ot { color: #007020; } .sourceCode span.al { color: red; font-weight: bold; } .sourceCode span.fu { color: #06287e; } .sourceCode span.re { } .sourceCode span.er { color: red; font-weight: bold; }
+</style>
 <title>IDA и NES</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css" />
-<link rel="stylesheet" type="text/css" href="../../css/syntax.css" />
 <link rel="icon" type="image/png" href="../../files/favicon.png" />
 </head><body>
-<div id="sidebar"><img src="../../files/head.svg" width="90%" alt="SVG not supported" /></div>
-<div id="nav">
-<table cellpadding="3" cellspacing="3"><tbody><tr> 
-<td class="cl">  <a href="../../">NEWS</a> </td>
-<td class="cl">  <a href="../../doc/">ARTiCLES</a> </td>
-<td class="cl">  <a href="../../passgen/">PASSGENS</a> </td>
-<td class="cl">  <a href="../../archive.html">ARCHiVE</a> </td>
-<td class="cl">  <a href="../../about.html">ABOUT</a> </td>
-</tr></tbody></table></div>
-<div id="content">
-	<h1>IDA и NES</h1>
+<div style="position:absolute; top:0; bottom:0; left:0; width:25%; text-align: right">
+<img src="../../files/head.svg" width="90%" alt="SVG not supported" /></div>
+<div style=" margin: 0 auto; font-size: medium; width: 50%; text-align: justify; color: black; font-family: 'Georgia', serif;">
+ <table cellpadding="3" cellspacing="3"><tbody><tr> 
+ <td class="cl">  <a href="../../">NEWS</a> </td>
+ <td class="cl">  <a href="../../doc/">ARTiCLES</a> </td>
+ <td class="cl">  <a href="../../passgen/">PASSGENS</a> </td>
+ <td class="cl">  <a href="../../archive.html">ARCHiVE</a> </td>
+ <td class="cl">  <a href="../../about.html">ABOUT</a> </td>
+ </tr></tbody></table>
+ <h1>IDA и NES</h1>
 <p>Итак, пришло время поговорить о применении IDA в анализе кода игр NES . Что такое IDA? Для чего она нужна? Ответы на эти и многие другие вопросы легко найти в Интернете, так как IDA – наиболее популярный на сегодняшний день дизассемблер, что частично подтверждает его заоблачная цена (к несчастью, сломанные версии довольно трудно найти ( IDA отказывается анализировать сама себя ;)), однако они существуют). Я рекомендую найти версию не ниже 5.0: здесь появился ‘graph disassembly view’(вообще-то, он был и в более ранних версиях в виде ‘display flow chart’, но пользоваться им было не так удобно). Смысл этой функции в представлении куска кода (обычно IDA сама определяет границы подпрограммы) в виде графа (немного похоже на блок схему, если кто никогда не видел графа). Анализировать код стало ЗНАЧИТЕЛЬНО легче и приятнее.<br />
 Одним из главных плюсов IDA является поддержка огромного числа процессоров, в том числе и нашего любимого М6502. К сожалению, структура ROM а NES такова, что сходу загрузить его в IDA и начать анализ (я уж не говорю об автоматическом анализе) просто невозможно, поэтому этот документ и получил возможность увидеть свет.<br />
 Ну что ж, в качестве жертвы возьмем ROM ‘Battle City ( J )’. Открываем IDA (я буду показывать на примере 5.0) и нажимаем кнопку NEW и выбираем наш ROM . В появившемся окошке нужно выбрать в верхней части ‘binary file’, а в графе ‘processor type’ находим и выставляем строчку ‘MOS technology 65 xx series: M 6502’ и жмем ‘set’, а затем OK. Итак, вот и окно загрузки:<br />
@@ -50,9 +57,5 @@ D299 aBattle :' Battle ' </code></pre>
 *добавлено позднее:<br />
 К счастью, прогресс (в смысле CaH4e3, конечно) не стоит на месте и постоянно стремится облегчить нашу жизнь. Не так давно, наш гуру покопался в SDK IDA и написал первый в мире загрузчик ROM’ов в формате iNES, любезно предоставив нам возможность его усовершенствования и оставив сырцы. Итак, как им пользоваться. Берём файлик ‘ines.ldw’, помещаем его в директорию IDA в папку loaders (...), а потом просто открываем чистейший файл *.nes в IDA - загрузчик вылезет сам. Нам остаётся только выбрать его и наслаждаться слаженной работой. Работает он по тому же принципу, что и мой скрипт - находит адреса, на которые указывают вектора и дизассемблирует их. Сами векторы теперь можно будет найти во вкладке ‘Exports’. А прелесть загрузчика в том, что он может создавать листинги сразу всех банков разом без утомительных добавлений двоичных файлов и работы в хексредакторе. Так что давайте поблагодарим CaH4e3’а и пожелаем ему дальнейших успехов.<br />
 “Tip of Day: если надо перебросить вызов подпрограммы в другой банк, на имени функции в опкоде нажать Alt+R и выбрать нужный.”<br />
-Как следует из исходного кода загрузчика, он предназначен для игр с 0,1,2,3,4,7,11,121,216 мапперами, что перекрывает большинство игр. Однако, если вы хотите использовать загрузчик для игр с другими мапперами, придется несколько модифицировать загрузчик, добавив ему функциональности.</p>
-
-
-
-
-
+Как следует из исходного кода загрузчика, он предназначен для игр с 0,1,2,3,4,7,11,121,216 мапперами, что перекрывает большинство игр. Однако, если вы хотите использовать загрузчик для игр с другими мапперами, придется несколько модифицировать загрузчик, добавив ему функциональности.</p><hr />
+</div></body></html>

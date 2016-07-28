@@ -2,22 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+body {line-height: 1.5; padding: 4em 1em;}
+h2 {margin-top: 1em; padding-top: 1em;}
+.cl{border-style:solid; border-width:1px; text-align:center; width:100px;} .cl a {text-decoration:none;}
+.dl{border-style:solid; border-width:1px; text-align:center; width:50px;}
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode, table.sourceCode pre { margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; }
+td.lineNumbers { border-right: 1px solid #AAAAAA; text-align: right; color: #AAAAAA; padding-right: 5px; padding-left: 5px; } td.sourceCode { padding-left: 5px; }
+.sourceCode span.kw { color: #007020; font-weight: bold; } .sourceCode span.dt { color: #902000; } .sourceCode span.dv { color: #40a070; } .sourceCode span.bn { color: #40a070; } .sourceCode span.fl { color: #40a070; } .sourceCode span.ch { color: #4070a0; } .sourceCode span.st { color: #4070a0; } .sourceCode span.co { color: #60a0b0; font-style: italic; } .sourceCode span.ot { color: #007020; } .sourceCode span.al { color: red; font-weight: bold; } .sourceCode span.fu { color: #06287e; } .sourceCode span.re { } .sourceCode span.er { color: red; font-weight: bold; }
+</style>
 <title>Архивы в играх PSX</title>
-<link rel="stylesheet" type="text/css" href="../../css/style.css" />
-<link rel="stylesheet" type="text/css" href="../../css/syntax.css" />
 <link rel="icon" type="image/png" href="../../files/favicon.png" />
 </head><body>
-<div id="sidebar"><img src="../../files/head.svg" width="90%" alt="SVG not supported" /></div>
-<div id="nav">
-<table cellpadding="3" cellspacing="3"><tbody><tr> 
-<td class="cl">  <a href="../../">NEWS</a> </td>
-<td class="cl">  <a href="../../doc/">ARTiCLES</a> </td>
-<td class="cl">  <a href="../../passgen/">PASSGENS</a> </td>
-<td class="cl">  <a href="../../archive.html">ARCHiVE</a> </td>
-<td class="cl">  <a href="../../about.html">ABOUT</a> </td>
-</tr></tbody></table></div>
-<div id="content">
-	<h1>Архивы в играх PSX</h1>
+<div style="position:absolute; top:0; bottom:0; left:0; width:25%; text-align: right">
+<img src="../../files/head.svg" width="90%" alt="SVG not supported" /></div>
+<div style=" margin: 0 auto; font-size: medium; width: 50%; text-align: justify; color: black; font-family: 'Georgia', serif;">
+ <table cellpadding="3" cellspacing="3"><tbody><tr> 
+ <td class="cl">  <a href="../../">NEWS</a> </td>
+ <td class="cl">  <a href="../../doc/">ARTiCLES</a> </td>
+ <td class="cl">  <a href="../../passgen/">PASSGENS</a> </td>
+ <td class="cl">  <a href="../../archive.html">ARCHiVE</a> </td>
+ <td class="cl">  <a href="../../about.html">ABOUT</a> </td>
+ </tr></tbody></table>
+ <h1>Архивы в играх PSX</h1>
 <p>Основное отличие PSX от приставок предыдущего поколения, разумеется, является наличие CDROM, которое, в общих чертах, имеет преимущество по сравнению с другими носителями при чтении длинных потоков данных на постоянной скорости. И проигрывает с технической точки зрения во всём остальном (например, в скорости поиска, разгона/остановки).<br />
 Изначально компакт-диск PSX имеет одновременно треки цифрового аудио и данных. Он имеет файловую систему ISO 9660 для треков данных, описание которой нас мало интересует, кроме нескольких важных фактов, влияющие в дальнейшем на методики чтения секторов данных.</p>
 <ul>
@@ -100,9 +107,5 @@ DestPath: PChar; DestName: PChar): <span class="dt">Integer</span>; stdcall;</co
 AddList: PChar; Flags: <span class="dt">Integer</span>): <span class="dt">Integer</span>; stdcall;</code></pre></div>
 <p>Упаковываем переданный список файлов в один архив. Никаких хитростей, разве что нужно обратить внимание, что каждый новый файл начинается с нового сектора, поэтому предусмотрено выравнивание адреса начала каждого файла на 0х800 и дополнительно предусмотрена передача имени упаковываемого в данный момент файла в TCmd для отображения в окошке Progress Bar’а.<br />
 Отладка такая же, как и любого dll - прописываем в Delphi в качестве host application исполняемый файл Total Commander, закрываем запущенный TCmd, если вы им пользуетесь и запускаем его из-под Delphi. Ставим точки останова для отладки и производим действия с архивом, которые должны вызвать исполнение нужного нам кода плагина.<br />
-Похоже, что всё. Для автоматической установки плагина в TCmd добавляем в архив с откомпилированным .wcx файлом ini файл pluginst и спокойно работаем с архивом.</p>
-
-
-
-
-
+Похоже, что всё. Для автоматической установки плагина в TCmd добавляем в архив с откомпилированным .wcx файлом ini файл pluginst и спокойно работаем с архивом.</p><hr />
+</div></body></html>

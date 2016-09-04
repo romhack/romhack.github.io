@@ -8,8 +8,16 @@
         <name>Griever</name>
         <email>siteName@gmail.com</email>
     </author>
-    <updated>2016-07-27T00:00:00Z</updated>
+    <updated>2016-09-04T00:00:00Z</updated>
     <entry>
+    <title>2016-09-04-</title>
+    <link href="https://romhack.github.io/news/2016-09-04-.html" />
+    <id>https://romhack.github.io/news/2016-09-04-.html</id>
+    <published>2016-09-04T00:00:00Z</published>
+    <updated>2016-09-04T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<p>﻿Two new documents added: a short <a href="doc/gbcHiColour">technical note</a> for GBC Hicolour technique and standard romhacking <a href="doc/snesTiles">tutorial</a> for SNES compressed graphics. The last is in Russian, as it’s too specific for Russian romhacking scene.</p>]]></summary>
+</entry>
+<entry>
     <title>2016-07-27-</title>
     <link href="https://romhack.github.io/news/2016-07-27-.html" />
     <id>https://romhack.github.io/news/2016-07-27-.html</id>
@@ -50,14 +58,6 @@
     <published>2013-06-02T00:00:00Z</published>
     <updated>2013-06-02T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>﻿Wow, that’s been a while since my last activity here. I have no excuses - just real life and work :) I will not promise anything global here, especially as the RSS channel is still running. If you’re interested, just subscribe. I have cleared design - tutorials look better now everywhere, except IE. I don’t want to make a mess in HTML code for the sake of IE compatibility. More pages now meet all W3C markup requirements. And yes, I have switched to English. Use Google translate if necessary. For today brief <a href="/doc/kruptarPlugins">document</a>, which describes Kruptar’s plugin writing process in C.</p>]]></summary>
-</entry>
-<entry>
-    <title>2010-05-19-</title>
-    <link href="https://romhack.github.io/news/2010-05-19-.html" />
-    <id>https://romhack.github.io/news/2010-05-19-.html</id>
-    <published>2010-05-19T00:00:00Z</published>
-    <updated>2010-05-19T00:00:00Z</updated>
-    <summary type="html"><![CDATA[<p>﻿Работа не пощадила моего свободного времени, так что я даже забыл какие новости произошли за полгода моего отсутствия на своей страничке, но из последних врезавшихся в память: мы переехали на новый хостинг, оставшись по <a href="http://www.magicteam.net">старому адресу</a>. И как-то в начале года ради интереса я привел основые страницы к требованиям валидации W3C markup. А ещё я в очередной раз изобрёл велосипед и прикрутил к своим статьям комментарии, милости просим всех желающих. Старые новости, как всегда, <a href="/archive.html">здесь</a>.</p>]]></summary>
 </entry>
 
 </feed>

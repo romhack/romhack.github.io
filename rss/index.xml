@@ -8,8 +8,16 @@
         <name>Griever</name>
         <email>siteName@gmail.com</email>
     </author>
-    <updated>2016-09-04T00:00:00Z</updated>
+    <updated>2018-02-24T00:00:00Z</updated>
     <entry>
+    <title>2018-02-24-</title>
+    <link href="https://romhack.github.io/news/2018-02-24-.html" />
+    <id>https://romhack.github.io/news/2018-02-24-.html</id>
+    <published>2018-02-24T00:00:00Z</published>
+    <updated>2018-02-24T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<p>﻿I have finally come up with normal <a href="https://github.com/romhack/kirbyLzRle/">compression tool</a> in Haskell for NES game Kirby’s Adventure. While I still remember juicy details of struggling for compressor’s optimality and Kirby’s hacking history in general, I put some notes <a href="doc/halCompression">here</a>.</p>]]></summary>
+</entry>
+<entry>
     <title>2016-09-04-</title>
     <link href="https://romhack.github.io/news/2016-09-04-.html" />
     <id>https://romhack.github.io/news/2016-09-04-.html</id>
@@ -50,14 +58,6 @@
 <li>Page availability time. GitHub is self-explaining.</li>
 </ul>
 <p>I’ve also added some Disqus and <a href="/rss/">Atom feed</a> for your convenience. Hopefully, all pages are still valid as strict XHTML. Pages are rewritten into markdown in a short time, so there still can be some errors. Please let me know, if you’ll find them.</p>]]></summary>
-</entry>
-<entry>
-    <title>2013-06-02-</title>
-    <link href="https://romhack.github.io/news/2013-06-02-.html" />
-    <id>https://romhack.github.io/news/2013-06-02-.html</id>
-    <published>2013-06-02T00:00:00Z</published>
-    <updated>2013-06-02T00:00:00Z</updated>
-    <summary type="html"><![CDATA[<p>﻿Wow, that’s been a while since my last activity here. I have no excuses - just real life and work :) I will not promise anything global here, especially as the RSS channel is still running. If you’re interested, just subscribe. I have cleared design - tutorials look better now everywhere, except IE. I don’t want to make a mess in HTML code for the sake of IE compatibility. More pages now meet all W3C markup requirements. And yes, I have switched to English. Use Google translate if necessary. For today brief <a href="/doc/kruptarPlugins">document</a>, which describes Kruptar’s plugin writing process in C.</p>]]></summary>
 </entry>
 
 </feed>

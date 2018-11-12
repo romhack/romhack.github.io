@@ -89,21 +89,104 @@ GWZED 22</p>
 <li>Размер. В большинстве случаев, размер страницы оказывается меньше, чем подобное приложение на ассемблере (и несравнимо меньше затраты времени на разработку). JavaScript обладает всеми необходимыми для генератора элементами формы (чекбоксы, выпадающие списки, области ввода, кнопки и т.п.). А скорости от генератора никто и не требует.</li>
 <li>Скрипт не исполняется на машине пользователя и не имеет доступа к файловой системе / реестру напрямую. Значит, вероятность того, что ваш генератор окажется вредоносным, минимальна - это успокаивает пользователя, который всегда с опаской запускает на своей машине исполняемый файл от незнакомого человека.</li>
 <li>JavaScript должен одинаково работать на любых браузерах под любыми операционными системами, что и не снилось исполняемым файлам.</li>
-<li>JavaScript элементарно встраивается в любую нужную вам HTML страницу, например вот так:
-<script type="text/javascript">
-function get_password() { var tmp = ‘’; hex = ’ABCDEFGHIJKLMNOPQRSTUVWXYZ’; for(i=0; i&lt;5; i++) tmp += hex.charAt(pwd[i]); return tmp }</li>
+<li>JavaScript элементарно встраивается в любую нужную вам HTML страницу, например вот так:</li>
 </ol>
-<p>function ROR_W (Count, A) {var i, result</p>
-<p>for (i = 1; i&lt;= Count; i++) { result = (A &gt;&gt; 1)|((A &amp; 1) &lt;&lt; 15); A = result } return result }</p>
-<p>function Div_W(reg,oper) {var Hi, Lo, reg, oper, result</p>
-<p>Lo = Math.floor(reg / oper); Hi = reg - Lo*oper; result = Lo|(Hi &lt;&lt; 16); return result }</p>
-<p>//——————–Shuffle Data———————– function Shuffle_Data() { var d1_tmp, d7_tmp ;</p>
-<p>d7_tmp = 0xD;//особенность dbf d1_tmp = d0; do {d0 ^= (d1_tmp &gt;&gt; 1); d7_tmp– } while(d7_tmp != 0); d0 &amp;= 1 } //——————–End Shuffle Data——————</p>
-<p>//——————–CheckSum Calc———————– function CheckSum_Calc() { document.passform.check.checked = false; d0 = (document.passform.level.value &amp; 0xFF)%24; if (d0 == 0 | d0 &gt; 360) document.passform.check.checked = true; d1 = (document.passform.soldier.value &amp; 0x3FF)%361; if (d1 == 0 | d1 &gt; d0*15) document.passform.check.checked = true;</p>
-<p>CheckSum = 0; d7 = d0; d1 &lt;&lt;= 5; d7 |= d1; d0 = d7; Shuffle_Data(); d0 = ROR_W(1,d0); d7 |= d0; d0 = (ROR_W(1,d0)) ^ 0x4000; d7 |= d0; d6 = d7 &gt;&gt; 8; d6 = (d6 &amp; 0xFF00)|((d6 + (d7 &amp; 0xFF)) &amp; 0xFF); //add.b d6 = (ROR_W(2,d6)) &amp; 0x7F; CheckSum_L = d7; CheckSum_H = d6; CheckSum = ((CheckSum|d6) &lt;&lt; 16) |d7 } //——————– END CheckSum Calc——————</p>
-<p>//——————-Main——————————- function generate (){</p>
-<p>var d0,d1,d6,d7, CheckSum, d0_l,i; pwd = Array(5);</p>
-CheckSum_Calc(); for (i=0; i&lt;= 4; i++) { d0_l = Div_W(CheckSum_H,26); CheckSum_H = d0_l &amp; 0xFFFF; d0_l = (d0_l &amp; 0xFFFF0000)|CheckSum_L ; d0_l = Div_W(d0_l,26); CheckSum_L = d0_l &amp; 0xFFFF; pwd[i] = d0_l &gt;&gt; 16 } document.passform.password.value=get_password() }
+<script type="text/javascript">
+function get_password() 
+ { 
+  var tmp = ''; hex = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
+  for(i=0; i<5; i++) tmp += hex.charAt(pwd[i]); 
+  return tmp 
+ } 
+ 
+ function ROR_W (Count, A)
+ {var i, result 
+ 
+ for (i = 1; i<= Count; i++)
+ {
+ result = (A >> 1)|((A & 1) << 15);
+ A = result
+ }
+ return result
+}
+
+function Div_W(reg,oper)
+{var Hi, Lo, reg, oper, result 
+
+ Lo = Math.floor(reg / oper);
+ Hi = reg - Lo*oper;
+ result = Lo|(Hi << 16);
+ return result
+}
+
+
+//--------------------Shuffle Data-----------------------
+function Shuffle_Data() 
+{
+var
+d1_tmp, d7_tmp ;
+
+ d7_tmp = 0xD;//особенность dbf
+ d1_tmp = d0;
+ do
+ {d0 ^= (d1_tmp >> 1);
+ d7_tmp--
+ } 
+ while(d7_tmp != 0);
+ d0 &= 1 
+}
+//--------------------End Shuffle Data------------------
+
+
+//--------------------CheckSum Calc-----------------------
+function CheckSum_Calc()
+{
+document.passform.check.checked = false;
+d0 = (document.passform.level.value & 0xFF)%24;
+if (d0 == 0 | d0 > 360) document.passform.check.checked = true;
+d1 = (document.passform.soldier.value & 0x3FF)%361;
+if (d1 == 0 | d1 > d0*15) document.passform.check.checked = true;
+
+CheckSum = 0;
+d7 = d0;
+d1 <<= 5;
+d7 |= d1;
+d0 = d7;
+Shuffle_Data();
+d0 = ROR_W(1,d0);
+d7 |= d0;
+d0 = (ROR_W(1,d0)) ^ 0x4000;
+d7 |= d0;
+d6 = d7 >> 8;
+d6 = (d6 & 0xFF00)|((d6 + (d7 & 0xFF)) & 0xFF); //add.b
+d6 = (ROR_W(2,d6)) & 0x7F;
+CheckSum_L = d7;
+CheckSum_H = d6;
+CheckSum = ((CheckSum|d6) << 16) |d7
+}
+//-------------------- END CheckSum Calc------------------
+
+
+
+//-------------------Main-------------------------------
+function generate (){
+
+var d0,d1,d6,d7,
+CheckSum, d0_l,i;
+pwd = Array(5);
+
+CheckSum_Calc();
+for (i=0; i<= 4; i++)
+ {
+ d0_l = Div_W(CheckSum_H,26);
+ CheckSum_H = d0_l & 0xFFFF;
+ d0_l = (d0_l & 0xFFFF0000)|CheckSum_L ;
+ d0_l = Div_W(d0_l,26);
+ CheckSum_L = d0_l & 0xFFFF;
+ pwd[i] = d0_l >> 16
+ }
+document.passform.password.value=get_password()
+}
 </script>
 <center>
 <span class="style1">SEGA Genesis/MD “Cannon Fodder” Password Generator</span><br>
@@ -138,6 +221,6 @@ Hangs up the game:
 </table>
 <span class="text">*Level_Number &lt; 24, Soldiers_Alive_Quantity &lt; 361;<br> *If Soldiers_Alive_Quantity &gt; (Level_Number x 15), password will hang up the game;<br> *If Soldiers_Alive_Quantity &lt; (Soldiers_On_Mission + 1), password will hang up the game.<br> </span>
 </form>
-<pre><code>    &lt;/center&gt;</code></pre>
+</center>
 <p>К тому же, исходник скрипта любопытствующие смогут всегда увидеть в исходном коде страницы.</p><hr />
 </div></body></html>

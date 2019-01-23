@@ -13,16 +13,13 @@
 	<link type="text/css" rel="stylesheet" href="./RomPatcher.css" media="all"/>
 	<script type="text/javascript" src="./RomPatcher.js"></script>
 	<script type="text/javascript">// some hacks to reduce down to a simple patcher
-		var blob = null;
-		var xhr = new XMLHttpRequest();
-		xhr.open("GET", "http://romhack.github.io/files/romPatcherJs/1.ips");
-		xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
-		xhr.onload = function()
-		{
-			blob = xhr.response;//xhr.response is now a blob object
+		fetch('./1.ips')
+		  .then(res => res.blob()) // Gets the response and returns it as a blob
+		  .then(blob => {
+			blob.lastModifiedDate = new Date();
+			blob.name = "patch";
 			openPatchFile(blob);
-		}
-		xhr.send();
+		})
 	</script>
 	<script type="text/javascript" src="./ips.js"></script>
 	<script type="text/javascript" src="./ups.js"></script>

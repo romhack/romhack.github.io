@@ -3,30 +3,45 @@
 <head><meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style type="text/css">
-img { max-width: 100%; max-height: 100%;}
-body {line-height: 1.5; padding: 4em 1em;}
-h2 {margin-top: 1em; padding-top: 1em;}
-.cl{border-style:solid; border-width:1px; text-align:center; width:100px;} .cl a {text-decoration:none;}
-.dl{border-style:solid; border-width:1px; text-align:center; width:50px;}
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode, table.sourceCode pre { margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; }
-td.lineNumbers { border-right: 1px solid #AAAAAA; text-align: right; color: #AAAAAA; padding-right: 5px; padding-left: 5px; } td.sourceCode { padding-left: 5px; }
-.sourceCode span.kw { color: #007020; font-weight: bold; } .sourceCode span.dt { color: #902000; } .sourceCode span.dv { color: #40a070; } .sourceCode span.bn { color: #40a070; } .sourceCode span.fl { color: #40a070; } .sourceCode span.ch { color: #4070a0; } .sourceCode span.st { color: #4070a0; } .sourceCode span.co { color: #60a0b0; font-style: italic; } .sourceCode span.ot { color: #007020; } .sourceCode span.al { color: red; font-weight: bold; } .sourceCode span.fu { color: #06287e; } .sourceCode span.re { } .sourceCode span.er { color: red; font-weight: bold; }
-#nav {float:right;}
+img{max-width:100%}
+body{background:#fafafa;color:#222;font-family:"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6;margin:auto;padding:2rem}
+h2,strong{color:#111;margin-top:1em;padding-top:1em}
+.content{margin:0 auto;max-width:40rem;text-align:justify}
+.cl{border-style:solid;border-width:1px;text-align:center;width:100px}
+.cl a{text-decoration:none}
+.dl{border-style:solid;border-width:1px;text-align:center;width:50px}
+table.sourceCode,tr.sourceCode,td.lineNumbers,td.sourceCode,table.sourceCode pre{border:0;border:none;margin:0;padding:0;vertical-align:baseline}
+td.lineNumbers{border-right:1px solid #AAA;color:#AAA;padding-left:5px;padding-right:5px;text-align:right}
+td.sourceCode{padding-left:5px}
+.sourceCode span.kw{color:#007020;font-weight:700}
+.sourceCode span.dt{color:#902000}
+.sourceCode span.dv{color:#40a070}
+.sourceCode span.bn{color:#40a070}
+.sourceCode span.fl{color:#40a070}
+.sourceCode span.ch{color:#4070a0}
+.sourceCode span.st{color:#4070a0}
+.sourceCode span.co{color:#60a0b0;font-style:italic}
+.sourceCode span.ot{color:#007020}
+.sourceCode span.al{color:red;font-weight:700}
+.sourceCode span.fu{color:#06287e}
+.sourceCode span.er{color:red;font-weight:700}
 </style>
 <title>Password generators</title>
 <link href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAD1BMVEUAAABHcEwAAAAAAAAAAABxUQwvAAAABXRSTlP5ABxjsWDF1fcAAAC6SURBVHheXZHREYQgDET3xAaCFmDEApC7AhTpv6abIBIwX/DmTbKZgIgck5aAKb4AHeEF5pF7YGG4A+QRezADoQMWGLkCG5g2wHA1flewHtg1GHB9PT7aYwGQYBRM1wFpq1PYAcCuQKIBpgVLVipwqxgwXICVnlkpYCv/sRg2pRuYJ+kqyRGOmIGu69sp4m9cwZKASCtRO/aUVzvWOF3O3ymqYZFraE6ZlVMN9rIcP0AcdjDdXZj8cIM/F94kJn1XsxcAAAAASUVORK5CYII=" rel="icon" type="image/x-icon" />
 </head><body>
 <div style="position:absolute; top:0; left:0; width:100%">
 <a href="../"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASoAAAAiBAMAAAAaMInFAAAAD1BMVEUAAAAAAAAAAAAAAAAAAABPDueNAAAABHRSTlMAPsGB1Tj7uQAAAYlJREFUeF7tmFGugjAQRafFBQyBBfiIC9CUBYjO/tf05NI6WqsGEmo/OF8107keJsUmUprGOaaVWB7fixxpBnni67rm4qzAL61MHXhYYlZPFYwOlQDrkk1U+RIPK3x8k0dWAryTANq0Qq3InsiIXOggnoEkcK5Ero8VpfoU/9xlJLBfy2qz2qwuHeAdlgdtQ+XVqsMmWGGpVh34i6ymEB/fhfgKWzUPVh04ktVnu7WdiVq1QuXViomst0KXWjHFoEKoTfEU4mlC8xDvia2MFGPlRtCGUV3vVsa5hFXl+rSVA6e5Vg3yjIQAvj+1b8OojmqVOO3YmLTyDHOt2vi0x1bjhgvNsTL+xlnTaow+z7BS1rSygpgsVmHC362Qvc9ihdonK+fuVjZ6B0e8VaXv4I1TbNVgb7/AqkGecaAPVk9t+tuu+ZNVH6wIIP8Fu8CKHmmTVvadVSU5rfBl2maSt7Nn0NOz5FwBxIP07Tzfiku0GqhEKy7RaqASrTiblUYyFUZ+q80q/z9KG/9rSELgY1xnzQAAAABJRU5ErkJggg==" alt="logo" /></a>
-<table id="nav" cellspacing="3"><tbody><tr> 
+<table style="float:right" cellspacing="3"><tbody><tr> 
  <td class="cl"> <a href="../">NEWS</a> </td>
  <td class="cl"> <a href="../doc">ARTiCLES</a> </td>
  <td class="cl"> <strong>PASSGENS</strong> </td>
  <td class="cl"> <a href="../archive.html">ARCHiVE</a> </td>
  <td class="cl"> <a href="../about.html">ABOUT ME</a> </td>
  </tr></tbody></table></div>
-<div style=" margin: 0 auto; font-size: medium; width: 50%; text-align: justify; font-family: 'Georgia', serif;">
+<div class="content">
 <ul>
+ <li><strong>[June 25, 2o19] <a href="Best_reverser_phd9_rom_Password_Generator.htm">"Best Reverser" contest Password Generator</a> [SEGA]</strong><p>Generator for CTF-like challenge, written specifically for <a href="../doc/segaBestReverserWriteup/">this</a> article.</p></li>
+ 
  <li><strong>[May  3, 2oo9] <a href="Widget_Password_Generator.htm">Widget</a> [NES]</strong><p>Небольшой генератор, тем не менее, таит в себе много опасностей. Проблема в том, что пароль кодирует только 4 бита, а все остальные приходится затыкать разными уловками, вроде условного распределения битов уровней по знакам в зависимости от счетчика фреймов. Сам генератор мог бы получиться меньше, если бы было меньше мороки с логикой самой игры: три уровня открываются после прохождения первого, один из фактически случайных байтов не может быть равен нулю и так далее.</p></li>
  
  <li><strong>[April 26, 2oo9] <a href="Addams_Family_Password_Generator.htm">Addams Family</a> [NES]</strong><p>Простенькая система паролей интересна криворукостью реализации: предполагается, что количество жизней обязано храниться в пароле, но под сегу это сделано настолько неаккуратно, что жизней всегда пять, даже если введен секретный пароль, который выставляет их в 99. Пароли подходят под Сегу и SNES. Впрочем, под SNES, оказывается, тоже есть баги: ввиду элементарного незнания создателем специфики использования флага переноса (bcc подразумевает bge, а не bgt после команды cmp), игра не хочет принимать количество жизней с цифрой 9.</p></li>

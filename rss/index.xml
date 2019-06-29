@@ -8,8 +8,17 @@
         <name>Griever</name>
         <email>siteName@gmail.com</email>
     </author>
-    <updated>2018-02-24T00:00:00Z</updated>
+    <updated>2019-06-25T00:00:00Z</updated>
     <entry>
+    <title>2019-06-25-</title>
+    <link href="https://romhack.github.io/news/2019-06-25-.html" />
+    <id>https://romhack.github.io/news/2019-06-25-.html</id>
+    <published>2019-06-25T00:00:00Z</published>
+    <updated>2019-06-25T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<p>﻿For today a <a href="doc/segaBestReverserWriteup/">pretty detailed writeup</a> on Russian CTF “Best Reverser”, which proposed middle-level keygenMe for Sega Genesis.<br />
+Keygen for that, as usually, placed in <a href="passgen/">this section</a>.</p>]]></summary>
+</entry>
+<entry>
     <title>2018-02-24-</title>
     <link href="https://romhack.github.io/news/2018-02-24-.html" />
     <id>https://romhack.github.io/news/2018-02-24-.html</id>
@@ -42,22 +51,6 @@
     <updated>2015-11-07T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p><a href="https://github.com/romhack/BC-BackFromSource">Battle City - Back From Source</a> was updated: fixed respawn time overflow after 42nd Level and Life bonus, taken by enemy now works correctly. Enemy counter at the right side is also updates accordingly. Thanks a lot to Max Silver for testing.</p>
 <p>Small page design fix was also done.</p>]]></summary>
-</entry>
-<entry>
-    <title>2014-06-15-</title>
-    <link href="https://romhack.github.io/news/2014-06-15-.html" />
-    <id>https://romhack.github.io/news/2014-06-15-.html</id>
-    <published>2014-06-15T00:00:00Z</published>
-    <updated>2014-06-15T00:00:00Z</updated>
-    <summary type="html"><![CDATA[<p>Previous version of my CMS (pages were hosted at griever.magicteam.net) was written by me in PHP. Interested one can find it <a href="https://github.com/romhack/griever.magicteam-CMS">here</a>. The time has come to move to a static generated site. These pages were generated with <a href="http://jaspervdj.be/hakyll/">Hakyll</a> and have many advantages, compared to my PHP CMS:</p>
-<ul>
-<li>Safety. I’ve written PHP CMS as my absolutely first project in PHP. I won’t be surprised if it had multiple security vulnerabilities. God forgive me for risking my translation group’s server.</li>
-<li>Speed. GitHub Pages is served with Nginx and automatically gzip’s content. No need to make minimalistic pages with poor design.</li>
-<li>Markdown. All my previous design experience can be expressed with one sentence: “put everything in &lt;pre&gt;, make it look like in notepad”. Now I’m not so radical. Lists, headings and code highlight make user experience better.</li>
-<li>Revision control system. Pages are just another <a href="https://github.com/romhack/romhack.github.io">Github repository</a>. Pages history can be found anytime, no backups needed.</li>
-<li>Page availability time. GitHub is self-explaining.</li>
-</ul>
-<p>I’ve also added some Disqus and <a href="/rss/">Atom feed</a> for your convenience. Hopefully, all pages are still valid as strict XHTML. Pages are rewritten into markdown in a short time, so there still can be some errors. Please let me know, if you’ll find them.</p>]]></summary>
 </entry>
 
 </feed>

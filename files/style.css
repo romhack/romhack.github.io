@@ -1,0 +1,212 @@
+img {
+  max-width: 100%;
+  display: block; margin-left: auto;margin-right: auto;
+}
+
+body {
+	background: #fafafa;
+	color: #222;
+	font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+	line-height: 1.6;
+	margin: auto;
+	position:relative;
+}
+
+h2,
+strong {
+	color: #111;
+	margin-top: 1em;
+	padding-top: 1em
+}
+
+a {
+	text-decoration: none;
+}
+
+pre {
+overflow: auto;	
+}
+
+.content-wide {
+	margin: 0 auto;
+	width: 45em;
+	min-width: 20em
+}
+
+.content-narrow {
+	margin: 0 auto;
+	width: 30em;
+	min-width: 20em
+}
+
+
+.cl {
+	border-style: solid;
+	border-width: 1px;
+	text-align: center;
+	width: 100px
+}
+
+.cl a {
+	text-decoration: none
+}
+
+.dl {
+	border-style: solid;
+	border-width: 1px;
+	text-align: center;
+	width: 50px
+}
+
+
+
+table.sourceCode,
+tr.sourceCode,
+td.lineNumbers,
+td.sourceCode,
+table.sourceCode pre {
+	border: 0;
+	border: none;
+	margin: 0;
+	padding: 0;
+	vertical-align: baseline
+}
+
+td.lineNumbers {
+	border-right: 1px solid #AAA;
+	color: #AAA;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: right
+}
+
+td.sourceCode {
+	padding-left: 5px
+}
+
+
+.sourceCode span.kw {
+	color: #007020;
+	font-weight: 700
+}
+
+.sourceCode span.dt {
+	color: #902000
+}
+
+.sourceCode span.dv {
+	color: #40a070
+}
+
+.sourceCode span.bn {
+	color: #40a070
+}
+
+.sourceCode span.fl {
+	color: #40a070
+}
+
+.sourceCode span.ch {
+	color: #4070a0
+}
+
+.sourceCode span.st {
+	color: #4070a0
+}
+
+.sourceCode span.co {
+	color: #60a0b0;
+	font-style: italic
+}
+
+.sourceCode span.ot {
+	color: #007020
+}
+
+.sourceCode span.al {
+	color: red;
+	font-weight: 700
+}
+
+.sourceCode span.fu {
+	color: #06287e
+}
+
+.sourceCode span.er {
+	color: red;
+	font-weight: 700
+}
+
+.header {
+	overflow: hidden;
+	min-width: 20em
+}
+
+.grey-color {
+	background-color: #f1f1f1;
+}
+
+.header a {
+	float: left;
+}
+
+.header a:hover {
+	background-color: #ddd;
+}
+
+.header a.active {
+	background-color: dodgerblue;
+	color: white;
+}
+
+.header-right {
+	float: right;
+}
+
+.header-right a {
+	color: black;
+	text-align: center;
+	padding: 8px;
+	font-size: 18px;
+	line-height: 25px;
+}
+
+.footer {
+	text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+	.header {
+		float: none;
+		text-align: center;
+	}
+	.header a {
+		float: none;
+		display: block;
+	}
+	.header-right {
+		float: none;
+	}
+	.content {
+		width: 60%
+	}
+}
+
+.footer {
+		text-align: left;
+		font-size: smaller;
+}
+
+.footer-right {
+
+	float: right;
+	
+}
+
+.footer-right a {
+	padding: 0 16px 16px 0;
+}
+
+.footer-right img {
+		display: inline;
+}

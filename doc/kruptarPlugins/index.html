@@ -14,7 +14,7 @@
         <a href="../../"><img src="../../files/logo.png" alt="logo" /></a>
         <div class="header-right">
             <a href="../../">NEWS</a> 
-             <a href="../../doc">ARTiCES</a>
+             <a href="../../doc">ARTiCLES</a>
              <a href="../../passgen">PASSGENS</a>
              <a href="../../archive.html">ARCHiVE</a>
             <a href="../../about.html">ABOUT</a>
@@ -27,118 +27,55 @@
 This manual documents how to use Kruptar (current version 7.1.1.17), and describes principles of writing plugins for that tool (focused mainly on C language).<br />
 Kruptar - is a tool for extracting and inserting text, widely used in romhacking and fan translation. Main purpose is to extract, edit, insert text and automatically recalculate pointers in one application, which is easily extendable by plugins for any compression support. Kruptar also supports DTE/MTE schemes natively. By analogy, this is like Atlas and Cartographer in one nice GUI with extended pointers schemes and full plugins support.<br />
 Written by Djinn a.k.a. Kusharami, latest version can be found at <a href="http://magicteam.net/index.php?page=programs">magicteam</a> - Russian fan translation group. Hereinafter I will sometimes refer to Russian websites and at your will, please use online <a href="https://translate.google.com/#ru/en/">translation services</a>.</p></li>
-<li><p><strong>Kruptar options</strong>.<br />
+<li><strong>Kruptar options</strong>.<br />
 First things first, Kruptar has great GUI, which is self-explanatory. Here I will clarify a few not so obvious things in short.<br />
 Project creation is straightforward: you specify source/destination ROMs and tables, create group, specify places in ROM, which can be used for text storage, add list of pointers, by choosing pointer scheme, options and pointer table offsets. Right after that, Kruptar extracts string corresponding to each pointer and you can save project file.<br />
 Kruptar stores its project in *.kpx file, which is zip archive. Inside you will find all tables, which you have previously loaded in project, changed script in *.txt and *.kdt - binary file, which stores group/list names, offsets, options etc.<br />
 After editing strings you, can press Recalculate and Insert button for text insertion.<br />
 And now, the options:<br />
-All numerical options can have ‘h’ before the value, for assigning it as hexadecimal.</p>
-<pre><code>kpCodePage: ??? 
-	Specifies code page, Kruptar will use for text.
-kpFlags:
-	Value 0-3 (2 significant bits). 
-	Set low bit - do not display string terminator in Kruptar. Script 
-	will look more straight, and CLRF code will be inserted as usual.
-	Set high bit - do not delete 3 last symbols in the end of the 
-	entry.
-	If you have dictionary group all entries will have terminator as 
-	last 3 symbols (i.e. '/00'). By default, this symbols are deleted
-	by Kruptar, and you can discard that by this option.
-
-Tables: 
-	You can load a table from separate file. Encoding is defined by BOM
-	for UTF. Or you can specify &quot;CP#&quot; in the beginning of script/table 
-	file, where # represents encoding number.
-	Kruptar supports single-byte entries, multi-byte entries, 
-	multi-character entries and combinations of these two. 
-	CLRF codes should not have any '=' signs after byte, and you can 
-	specify &quot;\n&quot; as a part of character entry.
-	String terminators should go after special word 'ends'. 
-	e.g.:
-	41=A
-	42=Box
-	439A=C
-	445A096C=Dammerung
-	45=E\n
-	46=F
-	FF
-	ends
-	00
-	Atlas and Cartographer rather than Kruptar, additionaly support 
-	non-normal entries: control codes (with parameters) and table 
-	switching.
-grPlugin:
-	Specifies plugin for that separate text group.
-grIsDictionary:
-	Makes that group dictionary. That affects some display features 
-	(affected by kpFlags = 2) and some dictionary options become 
-	available.
-ptDictionary:
-	Specifies dictionary group for DTE/MTE scripts.
-ptPointerSize:
-	Size of pointer in bytes. Can be 0 for scripts without pointers, 
-	just specify first and last strings offsets during 'Add Pointers'.
-ptReference:
-	stringOffset = ptReference + pointerValue
-	Signed integer.
-ptInterval:
-	Space in bytes between two separate pointers in pointer table. 
-	Integer. If ptSplittedPtrs is false, must be &gt; 0.
-	See ptSplittedPtrs for additional information.
-ptAlignment:
-	String offset force-alignment. This affects pointer value, of 
-	course.
-	Integer, must be &gt; 0.
-ptShiftLeft:
-	Pointer[i].value &lt;&lt;= ptShiftLeft; During extraction.
-	Integer, must be &gt;= 0.
-ptCharSize:
-	Specifies character size in original encoding for proper extraction.
-	Integer, must be &gt; 0.
-ptStringLength:
-	Length of fixed-length strings. If length is 0, Kruptar searches for 
-	string terminators. If both ptStringLength and ptPointerSize are zeroed, 
-	just specify ROM's text block first and last bytes offsets during 
-	'Add Pointers'.
-ptBIG_ENDIAN:
-	Pointer's endianness. For bytes swap, see ptSplittedPtrs.
-ptSplittedPtrs:
-	Space in bytes between bytes in one pointer, specified in ptInterval. 
-	For example, cases, when pointer 
-	value is in operands of two commands, or High and Low parts of 
-	pointer are stored in different tables.
-	4 bytes pointers are splitted at 2 and 2 bytes parts, 3 byte 
-	pointers are splitted to 1 byte Hi part and 2-byte Low part.
-	For byte swap set ptInterval &lt; 0, for instance: 4 byte pointer 
-	word-swap can be achieved with set ptSplittedPtrs and ptInterval = -2.
-
-ptSNESlorom:
-	For SNES LoROM images proper pointer recalculation.
-ptAutoPtrStart:
-	ptReference = PointerTableOffset; No need to fill ptReference. 
-ptAutoReference:
-	stringOffset[i] = ptReference + Pointer[i].value + Pointer[i].offset; 
-ptPtrtoPtr:
-	Pointer to pointer to string. Both pointers must have the same format.
-	Kruptar does not support multi-level pointers hierarchy yet.
-ptSeekSame:
-	During insertion, same strings will have the same pointer. 
-	No redundancy in text space.
-ptNotInSource:
-	Specifies group of strings, which was not previously in original ROM 
-	(added by translator).
-
-Right mouse button click on corresponding List gives you opportunity to select
-Fix pointers positon:
-	If you have changed pointer scheme somehow (for instance, 
-	ptDestPtrSize became 4 because text volume has increased), this 
-	recalculates pointer position for a new scheme.
-Reset TBL links:
-	Resets table links for all strings in group.
-Near-Pointer Variables:
-	This data can be represented as variables near pointers. 
-	The size is specified in ptInterval.</code></pre></li>
+All numerical options can have ‘h’ before the value, for assigning it as hexadecimal.<br />
+</li>
+</ol>
+<ul>
+<li>kpCodePage: ???<br />
+Specifies code page, Kruptar will use for text.</li>
+<li><p>kpFlags: Value 0-3 (2 significant bits). Set low bit - do not display string terminator in Kruptar. Script will look more straight, and CLRF code will be inserted as usual. Set high bit - do not delete 3 last symbols in the end of the entry. If you have dictionary group all entries will have terminator as last 3 symbols (i.e. ‘/00’). By default, this symbols are deleted by Kruptar, and you can discard that by this option.</p></li>
+<li>Tables: You can load a table from separate file. Encoding is defined by BOM for UTF. Or you can specify “CP#” in the beginning of script/table file, where # represents encoding number. Kruptar supports single-byte entries, multi-byte entries, multi-character entries and combinations of these two. CLRF codes should not have any ‘=’ signs after byte, and you can specify “” as a part of character entry. String terminators should go after special word ‘ends’. e.g.:<br />
+41=A<br />
+42=Box<br />
+439A=C<br />
+445A096C=Dammerung<br />
+45=E 46=F<br />
+FF<br />
+ends<br />
+00<br />
+Atlas and Cartographer rather than Kruptar, additionaly support non-normal entries: control codes (with parameters) and table switching.</li>
+<li>grPlugin: Specifies plugin for that separate text group.</li>
+<li>grIsDictionary: Makes that group dictionary. That affects some display features (affected by kpFlags = 2) and some dictionary options become available.</li>
+<li>ptDictionary: Specifies dictionary group for DTE/MTE scripts.</li>
+<li>ptPointerSize: Size of pointer in bytes. Can be 0 for scripts without pointers, just specify first and last strings offsets during ‘Add Pointers’.</li>
+<li>ptReference: stringOffset = ptReference + pointerValue Signed integer.</li>
+<li>ptInterval: Space in bytes between two separate pointers in pointer table. Integer. If ptSplittedPtrs is false, must be &gt; 0. See ptSplittedPtrs for additional information.</li>
+<li>ptAlignment: String offset force-alignment. This affects pointer value, of course. Integer, must be &gt; 0.</li>
+<li>ptShiftLeft: Pointer[i].value &lt;&lt;= ptShiftLeft; During extraction. Integer, must be &gt;= 0.</li>
+<li>ptCharSize: Specifies character size in original encoding for proper extraction. Integer, must be &gt; 0.</li>
+<li>ptStringLength: Length of fixed-length strings. If length is 0, Kruptar searches for string terminators. If both ptStringLength and ptPointerSize are zeroed, just specify ROM’s text block first and last bytes offsets during ‘Add Pointers’.</li>
+<li>ptBIG_ENDIAN: Pointer’s endianness. For bytes swap, see ptSplittedPtrs.</li>
+<li><p>ptSplittedPtrs: Space in bytes between bytes in one pointer, specified in ptInterval. For example, cases, when pointer value is in operands of two commands, or High and Low parts of pointer are stored in different tables. 4 bytes pointers are splitted at 2 and 2 bytes parts, 3 byte pointers are splitted to 1 byte Hi part and 2-byte Low part. For byte swap set ptInterval &lt; 0, for instance: 4 byte pointer word-swap can be achieved with set ptSplittedPtrs and ptInterval = -2.</p></li>
+<li>ptSNESlorom: For SNES LoROM images proper pointer recalculation.</li>
+<li>ptAutoPtrStart: ptReference = PointerTableOffset; No need to fill ptReference.</li>
+<li>ptAutoReference: stringOffset[i] = ptReference + Pointer[i].value + Pointer[i].offset;</li>
+<li>ptPtrtoPtr: Pointer to pointer to string. Both pointers must have the same format. Kruptar does not support multi-level pointers hierarchy yet.</li>
+<li>ptSeekSame: During insertion, same strings will have the same pointer. No redundancy in text space.</li>
+<li><p>ptNotInSource: Specifies group of strings, which was not previously in original ROM (added by translator).</p></li>
+</ul>
+<p>Right mouse button click on corresponding List gives you opportunity to select</p>
+<ul>
+<li>Fix pointers positon: If you have changed pointer scheme somehow (for instance, ptDestPtrSize became 4 because text volume has increased), this recalculates pointer position for a new scheme.</li>
+<li>Reset TBL links: Resets table links for all strings in group.</li>
+<li>Near-Pointer Variables: This data can be represented as variables near pointers. The size is specified in ptInterval.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
 <li><strong>Kruptar plugins</strong>.<br />
 Using described above options you can easily edit almost any plain script just with standard Kruptar. As Kruptar (naturally) does not provide interface for pointers modification, there are two cases when you want to write a plugin for Kruptar:</li>
 </ol>

@@ -187,7 +187,7 @@ td.sourceCode {
 	.header-right {
 		float: none;
 	}
-	.content {
+	.content-narrow, .content-wide {
 		width: 60%
 	}
 }
